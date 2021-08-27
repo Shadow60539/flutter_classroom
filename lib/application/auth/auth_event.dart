@@ -13,4 +13,5 @@ class AuthEvent with _$AuthEvent {
       required String password}) = _SignInUsingUsername;
 
   const factory AuthEvent.signInUsingGoogle() = _SignInUsingGoogle;
+  const factory AuthEvent.registerRole(int roleId) = _RegisterUserRole;
 }

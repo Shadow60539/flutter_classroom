@@ -20,7 +20,7 @@ Future<void> main() async {
   Hive.init(directory.path);
   Hive.registerAdapter(UserModelAdapter());
   await Hive.openBox<UserModel>(HiveBoxNames.user);
-
   configureInjection(Environment.prod);
+
   runApp(AppWidget());
 }

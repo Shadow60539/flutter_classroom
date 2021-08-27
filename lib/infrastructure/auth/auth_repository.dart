@@ -26,7 +26,7 @@ class AuthRepo extends IAuthRepo {
   final Box box;
 
   @override
-  Future<Either<AuthFailure, Unit>> signUpUsingUsernameAndPassword({
+  Future<Either<AuthFailure, UserModel>> signUpUsingUsernameAndPassword({
     required String userName,
     required String email,
     required String password,
@@ -40,8 +40,17 @@ class AuthRepo extends IAuthRepo {
         await userCollection.doc(userName).set(data);
         final UserCredential userCredential = await firebaseAuth
             .createUserWithEmailAndPassword(email: email, password: password);
-        box.put(HiveBoxNames.user, UserModel(roleId: 0, email: email));
-        return const Right(unit);
+        await box.put(
+            HiveBoxNames.user,
+            UserModel(
+              email: email,
+              id: userCredential.user!.uid,
+              userName: userName,
+            ));
+
+        final UserModel userModel = UserModel.fromCredential(userCredential);
+
+        return Right(userModel.copyWith(userName: userName));
       } else {
         return const Left(AuthFailure.userAlreadyExist());
       }
@@ -51,7 +60,7 @@ class AuthRepo extends IAuthRepo {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInUsingUsernameAndPassword(
+  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword(
       {required String userName, required String password}) async {
     final userCollection = firebaseFirestore.collection(USER_COLLECTION);
     final snapshot = await userCollection.doc(userName).get();
@@ -65,14 +74,24 @@ class AuthRepo extends IAuthRepo {
       final UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
 
-      return const Right(unit);
+      await box.put(
+          HiveBoxNames.user,
+          UserModel(
+            email: email,
+            id: userCredential.user!.uid,
+            userName: userName,
+          ));
+
+      final UserModel userModel = UserModel.fromCredential(userCredential);
+
+      return Right(userModel.copyWith(userName: userName));
     } else {
       return const Left(AuthFailure.noUserFound());
     }
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInUsingGoogle() async {
+  Future<Either<AuthFailure, UserModel>> signInUsingGoogle() async {
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
 
@@ -89,8 +108,30 @@ class AuthRepo extends IAuthRepo {
         final UserCredential credential =
             await firebaseAuth.signInWithCredential(googleCredential);
 
-        // return UserModel.fromUserCredential(credential);
-        return const Right(unit);
+        final userCollection = firebaseFirestore.collection(USER_COLLECTION);
+        final snapshot = await userCollection.doc(credential.user!.uid).get();
+        String? userName;
+
+        if (snapshot.data() != null) {
+          userName = snapshot.data()!["userName"] as String;
+        } else {
+          final data = {
+            "userName": credential.user!.uid,
+          };
+          await userCollection.doc(credential.user!.uid).set(data);
+        }
+
+        await box.put(
+            HiveBoxNames.user,
+            UserModel(
+              email: credential.user!.email!,
+              id: credential.user!.uid,
+              userName: userName,
+            ));
+
+        final UserModel userModel = UserModel.fromCredential(credential);
+
+        return Right(userModel.copyWith(userName: userName));
       } on PlatformException {
         throw const AuthFailure.googleSignInAccountRetrieve();
       }
@@ -98,8 +139,20 @@ class AuthRepo extends IAuthRepo {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> registerRole() async {
-    // TODO: implement registerRole
-    throw UnimplementedError();
+  Future<Either<AuthFailure, Unit>> registerRole(int roleId) async {
+    try {
+      final UserModel userModel = box.get(HiveBoxNames.user) as UserModel;
+
+      final String userName =
+          userModel.userName == null ? userModel.id! : userModel.userName!;
+
+      final data = {"role": roleId};
+
+      final userCollection = firebaseFirestore.collection(USER_COLLECTION);
+      await userCollection.doc(userName).update(data);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(AuthFailure.clientAuthFailure());
+    }
   }
 }

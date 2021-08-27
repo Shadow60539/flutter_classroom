@@ -38,6 +38,12 @@ class _$AuthEventTearOff {
   _SignInUsingGoogle signInUsingGoogle() {
     return const _SignInUsingGoogle();
   }
+
+  _RegisterUserRole registerRole(int roleId) {
+    return _RegisterUserRole(
+      roleId,
+    );
+  }
 }
 
 /// @nodoc
@@ -52,6 +58,7 @@ mixin _$AuthEvent {
     required TResult Function(String userName, String password)
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +67,7 @@ mixin _$AuthEvent {
         signUpUsingUsername,
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +76,7 @@ mixin _$AuthEvent {
     required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +84,7 @@ mixin _$AuthEvent {
     TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,6 +200,7 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     required TResult Function(String userName, String password)
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
   }) {
     return signUpUsingUsername(email, userName, password);
   }
@@ -201,6 +212,7 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
         signUpUsingUsername,
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
     required TResult orElse(),
   }) {
     if (signUpUsingUsername != null) {
@@ -215,6 +227,7 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
   }) {
     return signUpUsingUsername(this);
   }
@@ -225,6 +238,7 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
     required TResult orElse(),
   }) {
     if (signUpUsingUsername != null) {
@@ -333,6 +347,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     required TResult Function(String userName, String password)
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
   }) {
     return signInUsingUsername(userName, password);
   }
@@ -344,6 +359,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
         signUpUsingUsername,
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
     required TResult orElse(),
   }) {
     if (signInUsingUsername != null) {
@@ -358,6 +374,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
   }) {
     return signInUsingUsername(this);
   }
@@ -368,6 +385,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
     required TResult orElse(),
   }) {
     if (signInUsingUsername != null) {
@@ -434,6 +452,7 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     required TResult Function(String userName, String password)
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
   }) {
     return signInUsingGoogle();
   }
@@ -445,6 +464,7 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
         signUpUsingUsername,
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
     required TResult orElse(),
   }) {
     if (signInUsingGoogle != null) {
@@ -459,6 +479,7 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
   }) {
     return signInUsingGoogle(this);
   }
@@ -469,6 +490,7 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
     required TResult orElse(),
   }) {
     if (signInUsingGoogle != null) {
@@ -483,17 +505,148 @@ abstract class _SignInUsingGoogle implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$RegisterUserRoleCopyWith<$Res> {
+  factory _$RegisterUserRoleCopyWith(
+          _RegisterUserRole value, $Res Function(_RegisterUserRole) then) =
+      __$RegisterUserRoleCopyWithImpl<$Res>;
+  $Res call({int roleId});
+}
+
+/// @nodoc
+class __$RegisterUserRoleCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res>
+    implements _$RegisterUserRoleCopyWith<$Res> {
+  __$RegisterUserRoleCopyWithImpl(
+      _RegisterUserRole _value, $Res Function(_RegisterUserRole) _then)
+      : super(_value, (v) => _then(v as _RegisterUserRole));
+
+  @override
+  _RegisterUserRole get _value => super._value as _RegisterUserRole;
+
+  @override
+  $Res call({
+    Object? roleId = freezed,
+  }) {
+    return _then(_RegisterUserRole(
+      roleId == freezed
+          ? _value.roleId
+          : roleId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RegisterUserRole implements _RegisterUserRole {
+  const _$_RegisterUserRole(this.roleId);
+
+  @override
+  final int roleId;
+
+  @override
+  String toString() {
+    return 'AuthEvent.registerRole(roleId: $roleId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _RegisterUserRole &&
+            (identical(other.roleId, roleId) ||
+                const DeepCollectionEquality().equals(other.roleId, roleId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(roleId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$RegisterUserRoleCopyWith<_RegisterUserRole> get copyWith =>
+      __$RegisterUserRoleCopyWithImpl<_RegisterUserRole>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String userName, String password)
+        signUpUsingUsername,
+    required TResult Function(String userName, String password)
+        signInUsingUsername,
+    required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
+  }) {
+    return registerRole(roleId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String userName, String password)?
+        signUpUsingUsername,
+    TResult Function(String userName, String password)? signInUsingUsername,
+    TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
+    required TResult orElse(),
+  }) {
+    if (registerRole != null) {
+      return registerRole(roleId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
+    required TResult Function(_SignInUsingUsername value) signInUsingUsername,
+    required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
+  }) {
+    return registerRole(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
+    TResult Function(_SignInUsingUsername value)? signInUsingUsername,
+    TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
+    required TResult orElse(),
+  }) {
+    if (registerRole != null) {
+      return registerRole(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterUserRole implements AuthEvent {
+  const factory _RegisterUserRole(int roleId) = _$_RegisterUserRole;
+
+  int get roleId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$RegisterUserRoleCopyWith<_RegisterUserRole> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
   _AuthState call(
-      {required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
+      {required UserModel? user,
+      required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
-      required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption}) {
+      required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
+      required Option<Either<AuthFailure, Unit>> registerRoleOption}) {
     return _AuthState(
+      user: user,
       signUpUsingUsernameOption: signUpUsingUsernameOption,
       signInUsingUsernameOption: signInUsingUsernameOption,
       signInUsingGoogleOption: signInUsingGoogleOption,
+      registerRoleOption: registerRoleOption,
     );
   }
 }
@@ -503,12 +656,14 @@ const $AuthState = _$AuthStateTearOff();
 
 /// @nodoc
 mixin _$AuthState {
-// required User? user,
+  UserModel? get user => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get signUpUsingUsernameOption =>
       throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get signInUsingUsernameOption =>
       throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get signInUsingGoogleOption =>
+      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get registerRoleOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -521,9 +676,11 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
+      {UserModel? user,
+      Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
-      Option<Either<AuthFailure, Unit>> signInUsingGoogleOption});
+      Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
+      Option<Either<AuthFailure, Unit>> registerRoleOption});
 }
 
 /// @nodoc
@@ -536,11 +693,17 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? user = freezed,
     Object? signUpUsingUsernameOption = freezed,
     Object? signInUsingUsernameOption = freezed,
     Object? signInUsingGoogleOption = freezed,
+    Object? registerRoleOption = freezed,
   }) {
     return _then(_value.copyWith(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       signUpUsingUsernameOption: signUpUsingUsernameOption == freezed
           ? _value.signUpUsingUsernameOption
           : signUpUsingUsernameOption // ignore: cast_nullable_to_non_nullable
@@ -553,6 +716,10 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
           ? _value.signInUsingGoogleOption
           : signInUsingGoogleOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      registerRoleOption: registerRoleOption == freezed
+          ? _value.registerRoleOption
+          : registerRoleOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -564,9 +731,11 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$AuthStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
+      {UserModel? user,
+      Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
-      Option<Either<AuthFailure, Unit>> signInUsingGoogleOption});
+      Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
+      Option<Either<AuthFailure, Unit>> registerRoleOption});
 }
 
 /// @nodoc
@@ -580,11 +749,17 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? user = freezed,
     Object? signUpUsingUsernameOption = freezed,
     Object? signInUsingUsernameOption = freezed,
     Object? signInUsingGoogleOption = freezed,
+    Object? registerRoleOption = freezed,
   }) {
     return _then(_AuthState(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       signUpUsingUsernameOption: signUpUsingUsernameOption == freezed
           ? _value.signUpUsingUsernameOption
           : signUpUsingUsernameOption // ignore: cast_nullable_to_non_nullable
@@ -597,6 +772,10 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.signInUsingGoogleOption
           : signInUsingGoogleOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      registerRoleOption: registerRoleOption == freezed
+          ? _value.registerRoleOption
+          : registerRoleOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -605,26 +784,34 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 class _$_AuthState implements _AuthState {
   const _$_AuthState(
-      {required this.signUpUsingUsernameOption,
+      {required this.user,
+      required this.signUpUsingUsernameOption,
       required this.signInUsingUsernameOption,
-      required this.signInUsingGoogleOption});
+      required this.signInUsingGoogleOption,
+      required this.registerRoleOption});
 
-  @override // required User? user,
+  @override
+  final UserModel? user;
+  @override
   final Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption;
   @override
   final Option<Either<AuthFailure, Unit>> signInUsingUsernameOption;
   @override
   final Option<Either<AuthFailure, Unit>> signInUsingGoogleOption;
+  @override
+  final Option<Either<AuthFailure, Unit>> registerRoleOption;
 
   @override
   String toString() {
-    return 'AuthState(signUpUsingUsernameOption: $signUpUsingUsernameOption, signInUsingUsernameOption: $signInUsingUsernameOption, signInUsingGoogleOption: $signInUsingGoogleOption)';
+    return 'AuthState(user: $user, signUpUsingUsernameOption: $signUpUsingUsernameOption, signInUsingUsernameOption: $signInUsingUsernameOption, signInUsingGoogleOption: $signInUsingGoogleOption, registerRoleOption: $registerRoleOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AuthState &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.signUpUsingUsernameOption,
                     signUpUsingUsernameOption) ||
                 const DeepCollectionEquality().equals(
@@ -638,15 +825,20 @@ class _$_AuthState implements _AuthState {
             (identical(
                     other.signInUsingGoogleOption, signInUsingGoogleOption) ||
                 const DeepCollectionEquality().equals(
-                    other.signInUsingGoogleOption, signInUsingGoogleOption)));
+                    other.signInUsingGoogleOption, signInUsingGoogleOption)) &&
+            (identical(other.registerRoleOption, registerRoleOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.registerRoleOption, registerRoleOption)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(signUpUsingUsernameOption) ^
       const DeepCollectionEquality().hash(signInUsingUsernameOption) ^
-      const DeepCollectionEquality().hash(signInUsingGoogleOption);
+      const DeepCollectionEquality().hash(signInUsingGoogleOption) ^
+      const DeepCollectionEquality().hash(registerRoleOption);
 
   @JsonKey(ignore: true)
   @override
@@ -656,12 +848,16 @@ class _$_AuthState implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-          {required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
+          {required UserModel? user,
+          required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
           required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
-          required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption}) =
+          required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
+          required Option<Either<AuthFailure, Unit>> registerRoleOption}) =
       _$_AuthState;
 
-  @override // required User? user,
+  @override
+  UserModel? get user => throw _privateConstructorUsedError;
+  @override
   Option<Either<AuthFailure, Unit>> get signUpUsingUsernameOption =>
       throw _privateConstructorUsedError;
   @override
@@ -669,6 +865,9 @@ abstract class _AuthState implements AuthState {
       throw _privateConstructorUsedError;
   @override
   Option<Either<AuthFailure, Unit>> get signInUsingGoogleOption =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Either<AuthFailure, Unit>> get registerRoleOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

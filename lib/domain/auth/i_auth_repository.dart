@@ -1,24 +1,25 @@
+import 'package:classroom/domain/auth/user_model.dart';
 import 'package:dartz/dartz.dart';
 
 import 'auth_failures.dart';
 
 abstract class IAuthRepo {
   /// Sign up using username and password
-  Future<Either<AuthFailure, Unit>> signUpUsingUsernameAndPassword({
+  Future<Either<AuthFailure, UserModel>> signUpUsingUsernameAndPassword({
     required String userName,
     required String email,
     required String password,
   });
 
   /// Sign in using username and password
-  Future<Either<AuthFailure, Unit>> signInUsingUsernameAndPassword({
+  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword({
     required String userName,
     required String password,
   });
 
   /// Sign in using google
-  Future<Either<AuthFailure, Unit>> signInUsingGoogle();
+  Future<Either<AuthFailure, UserModel>> signInUsingGoogle();
 
-  /// Register user role:- [Student, Teacher] 
-  Future<Either<AuthFailure, Unit>> registerRole();
+  /// Register user role:- [Student, Teacher]
+  Future<Either<AuthFailure, Unit>> registerRole(int roleId);
 }
