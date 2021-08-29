@@ -6,24 +6,24 @@ import 'package:classroom/domain/auth/auth_failures.dart';
 import 'package:classroom/domain/auth/i_auth_repository.dart';
 import 'package:classroom/domain/auth/user_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'auth_event.dart';
-part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
+part 'auth_event.dart';
+part 'auth_state.dart';
 
 @injectable
 @prod
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepo) : super(AuthState.initial());
-  static void addEventWithoutContext(AuthEvent e) =>
-      BlocProvider.of<AuthBloc>(context).add(e);
   final IAuthRepo authRepo;
 
+  static void addEventWithoutContext(AuthEvent e) =>
+      BlocProvider.of<AuthBloc>(context).add(e);
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
