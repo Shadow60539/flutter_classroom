@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:classroom/core/utils/custom_build_context.dart';
+import 'package:classroom/domain/courses/course_model.dart';
 import 'package:classroom/domain/courses/courses_failure.dart';
 import 'package:classroom/domain/courses/i_courses_repo.dart';
 import 'package:dartz/dartz.dart';

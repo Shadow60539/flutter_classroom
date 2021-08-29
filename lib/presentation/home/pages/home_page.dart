@@ -1,4 +1,5 @@
 import 'package:classroom/application/course/course_bloc.dart';
+import 'package:classroom/presentation/home/pages/course_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    CourseBloc.addEventWithoutContext(CourseEvent.getCourses());
+    CourseBloc.addEventWithoutContext(const CourseEvent.getCourses());
     super.initState();
   }
 
@@ -28,7 +29,16 @@ class _HomePageState extends State<HomePage> {
             itemCount: state.courses.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                title: Text(state.courses[index].name ?? "<NO-NAME>"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              CoursePage(course: state.courses[index])));
+                },
+                title: Text(
+                  state.courses[index].name,
+                ),
               );
             },
           );

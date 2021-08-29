@@ -1,7 +1,7 @@
+import 'package:classroom/domain/courses/course_model.dart';
 import 'package:classroom/domain/courses/courses_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:googleapis/classroom/v1.dart';
 
 abstract class ICoursesRepo {
-  Future<Either<CourseFailure, List<Course>>> getCourses();
+  Future<Either<CourseFailure, List<CourseModel>>> getCourses();
 }

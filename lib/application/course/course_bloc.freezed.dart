@@ -152,8 +152,9 @@ class _$CourseStateTearOff {
   const _$CourseStateTearOff();
 
   _CourseState call(
-      {required List<Course> courses,
-      required Option<Either<CourseFailure, List<Course>>> getCoursesOption}) {
+      {required List<CourseModel> courses,
+      required Option<Either<CourseFailure, List<CourseModel>>>
+          getCoursesOption}) {
     return _CourseState(
       courses: courses,
       getCoursesOption: getCoursesOption,
@@ -166,8 +167,8 @@ const $CourseState = _$CourseStateTearOff();
 
 /// @nodoc
 mixin _$CourseState {
-  List<Course> get courses => throw _privateConstructorUsedError;
-  Option<Either<CourseFailure, List<Course>>> get getCoursesOption =>
+  List<CourseModel> get courses => throw _privateConstructorUsedError;
+  Option<Either<CourseFailure, List<CourseModel>>> get getCoursesOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -181,8 +182,8 @@ abstract class $CourseStateCopyWith<$Res> {
           CourseState value, $Res Function(CourseState) then) =
       _$CourseStateCopyWithImpl<$Res>;
   $Res call(
-      {List<Course> courses,
-      Option<Either<CourseFailure, List<Course>>> getCoursesOption});
+      {List<CourseModel> courses,
+      Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption});
 }
 
 /// @nodoc
@@ -202,11 +203,11 @@ class _$CourseStateCopyWithImpl<$Res> implements $CourseStateCopyWith<$Res> {
       courses: courses == freezed
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
-              as List<Course>,
+              as List<CourseModel>,
       getCoursesOption: getCoursesOption == freezed
           ? _value.getCoursesOption
           : getCoursesOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<CourseFailure, List<Course>>>,
+              as Option<Either<CourseFailure, List<CourseModel>>>,
     ));
   }
 }
@@ -219,8 +220,8 @@ abstract class _$CourseStateCopyWith<$Res>
       __$CourseStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<Course> courses,
-      Option<Either<CourseFailure, List<Course>>> getCoursesOption});
+      {List<CourseModel> courses,
+      Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption});
 }
 
 /// @nodoc
@@ -242,11 +243,11 @@ class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
       courses: courses == freezed
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
-              as List<Course>,
+              as List<CourseModel>,
       getCoursesOption: getCoursesOption == freezed
           ? _value.getCoursesOption
           : getCoursesOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<CourseFailure, List<Course>>>,
+              as Option<Either<CourseFailure, List<CourseModel>>>,
     ));
   }
 }
@@ -257,9 +258,9 @@ class _$_CourseState implements _CourseState {
   const _$_CourseState({required this.courses, required this.getCoursesOption});
 
   @override
-  final List<Course> courses;
+  final List<CourseModel> courses;
   @override
-  final Option<Either<CourseFailure, List<Course>>> getCoursesOption;
+  final Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption;
 
   @override
   String toString() {
@@ -292,14 +293,14 @@ class _$_CourseState implements _CourseState {
 
 abstract class _CourseState implements CourseState {
   const factory _CourseState(
-      {required List<Course> courses,
-      required Option<Either<CourseFailure, List<Course>>>
+      {required List<CourseModel> courses,
+      required Option<Either<CourseFailure, List<CourseModel>>>
           getCoursesOption}) = _$_CourseState;
 
   @override
-  List<Course> get courses => throw _privateConstructorUsedError;
+  List<CourseModel> get courses => throw _privateConstructorUsedError;
   @override
-  Option<Either<CourseFailure, List<Course>>> get getCoursesOption =>
+  Option<Either<CourseFailure, List<CourseModel>>> get getCoursesOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
