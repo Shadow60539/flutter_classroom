@@ -7,15 +7,13 @@ import 'package:classroom/domain/courses/courses_failure.dart';
 import 'package:classroom/domain/courses/i_courses_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:googleapis/classroom/v1.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'course_event.dart';
-part 'course_state.dart';
 
 part 'course_bloc.freezed.dart';
+part 'course_event.dart';
+part 'course_state.dart';
 
 @injectable
 @prod
@@ -37,6 +35,49 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         yield failureOrSuccess.fold(
           (l) => state.copyWith(getCoursesOption: Some(Left(l))),
           (r) => state.copyWith(getCoursesOption: Some(Right(r)), courses: r),
+        );
+      },
+      createCourse: (e) async* {
+        yield state.copyWith(createCourseOption: const None());
+        final failureOrSuccess = await _coursesRepo.createCourse(e.name);
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(createCourseOption: Some(Left(l))),
+          (r) => state.copyWith(createCourseOption: Some(Right(r))),
+        );
+      },
+      addStudentToCourse: (e) async* {
+        yield state.copyWith(sendInvitationOption: const None());
+        final failureOrSuccess = await _coursesRepo.addStudentToCourse(
+            courseId: e.courseId, studentEmail: e.studentEmail);
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(sendInvitationOption: Some(Left(l))),
+          (r) => state.copyWith(sendInvitationOption: Some(Right(r))),
+        );
+      },
+      deleteCourse: (e) async* {
+        yield state.copyWith(deleteCourseOption: const None());
+        final failureOrSuccess = await _coursesRepo.deleteCourse(e.courseId);
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(deleteCourseOption: Some(Left(l))),
+          (r) => state.copyWith(deleteCourseOption: Some(Right(r))),
+        );
+      },
+      updateCourse: (e) async* {
+        yield state.copyWith(updateCourseOption: const None());
+        final failureOrSuccess =
+            await _coursesRepo.updateCourse(courseId: e.courseId, name: e.name);
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(updateCourseOption: Some(Left(l))),
+          (r) => state.copyWith(updateCourseOption: Some(Right(r))),
+        );
+      },
+      removeStudentFromCourse: (e) async* {
+        yield state.copyWith(removeStudentOption: const None());
+        final failureOrSuccess = await _coursesRepo.removeStudentFromCourse(
+            courseId: e.courseId, studentEmail: e.studentEmail);
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(removeStudentOption: Some(Left(l))),
+          (r) => state.copyWith(removeStudentOption: Some(Right(r))),
         );
       },
     );

@@ -23,6 +23,14 @@ class _$CourseFailureTearOff {
   _ServerFailure serverFailure() {
     return const _ServerFailure();
   }
+
+  _StudentAlreadyInvitedFailure studentAlreadyInvited() {
+    return const _StudentAlreadyInvitedFailure();
+  }
+
+  _StudentAlreadyExistFailure studentAlreadyExist() {
+    return const _StudentAlreadyExistFailure();
+  }
 }
 
 /// @nodoc
@@ -34,12 +42,16 @@ mixin _$CourseFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() studentAlreadyInvited,
+    required TResult Function() studentAlreadyExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? studentAlreadyInvited,
+    TResult Function()? studentAlreadyExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,12 +59,19 @@ mixin _$CourseFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_StudentAlreadyInvitedFailure value)
+        studentAlreadyInvited,
+    required TResult Function(_StudentAlreadyExistFailure value)
+        studentAlreadyExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_StudentAlreadyInvitedFailure value)?
+        studentAlreadyInvited,
+    TResult Function(_StudentAlreadyExistFailure value)? studentAlreadyExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +136,8 @@ class _$_ClientFailure implements _ClientFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() studentAlreadyInvited,
+    required TResult Function() studentAlreadyExist,
   }) {
     return clientFailure();
   }
@@ -126,6 +147,8 @@ class _$_ClientFailure implements _ClientFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? studentAlreadyInvited,
+    TResult Function()? studentAlreadyExist,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -139,6 +162,10 @@ class _$_ClientFailure implements _ClientFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_StudentAlreadyInvitedFailure value)
+        studentAlreadyInvited,
+    required TResult Function(_StudentAlreadyExistFailure value)
+        studentAlreadyExist,
   }) {
     return clientFailure(this);
   }
@@ -148,6 +175,9 @@ class _$_ClientFailure implements _ClientFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_StudentAlreadyInvitedFailure value)?
+        studentAlreadyInvited,
+    TResult Function(_StudentAlreadyExistFailure value)? studentAlreadyExist,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -203,6 +233,8 @@ class _$_ServerFailure implements _ServerFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() studentAlreadyInvited,
+    required TResult Function() studentAlreadyExist,
   }) {
     return serverFailure();
   }
@@ -212,6 +244,8 @@ class _$_ServerFailure implements _ServerFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? studentAlreadyInvited,
+    TResult Function()? studentAlreadyExist,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -225,6 +259,10 @@ class _$_ServerFailure implements _ServerFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_StudentAlreadyInvitedFailure value)
+        studentAlreadyInvited,
+    required TResult Function(_StudentAlreadyExistFailure value)
+        studentAlreadyExist,
   }) {
     return serverFailure(this);
   }
@@ -234,6 +272,9 @@ class _$_ServerFailure implements _ServerFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_StudentAlreadyInvitedFailure value)?
+        studentAlreadyInvited,
+    TResult Function(_StudentAlreadyExistFailure value)? studentAlreadyExist,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -245,4 +286,204 @@ class _$_ServerFailure implements _ServerFailure {
 
 abstract class _ServerFailure implements CourseFailure {
   const factory _ServerFailure() = _$_ServerFailure;
+}
+
+/// @nodoc
+abstract class _$StudentAlreadyInvitedFailureCopyWith<$Res> {
+  factory _$StudentAlreadyInvitedFailureCopyWith(
+          _StudentAlreadyInvitedFailure value,
+          $Res Function(_StudentAlreadyInvitedFailure) then) =
+      __$StudentAlreadyInvitedFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$StudentAlreadyInvitedFailureCopyWithImpl<$Res>
+    extends _$CourseFailureCopyWithImpl<$Res>
+    implements _$StudentAlreadyInvitedFailureCopyWith<$Res> {
+  __$StudentAlreadyInvitedFailureCopyWithImpl(
+      _StudentAlreadyInvitedFailure _value,
+      $Res Function(_StudentAlreadyInvitedFailure) _then)
+      : super(_value, (v) => _then(v as _StudentAlreadyInvitedFailure));
+
+  @override
+  _StudentAlreadyInvitedFailure get _value =>
+      super._value as _StudentAlreadyInvitedFailure;
+}
+
+/// @nodoc
+
+class _$_StudentAlreadyInvitedFailure implements _StudentAlreadyInvitedFailure {
+  const _$_StudentAlreadyInvitedFailure();
+
+  @override
+  String toString() {
+    return 'CourseFailure.studentAlreadyInvited()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _StudentAlreadyInvitedFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
+    required TResult Function() studentAlreadyInvited,
+    required TResult Function() studentAlreadyExist,
+  }) {
+    return studentAlreadyInvited();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
+    TResult Function()? studentAlreadyInvited,
+    TResult Function()? studentAlreadyExist,
+    required TResult orElse(),
+  }) {
+    if (studentAlreadyInvited != null) {
+      return studentAlreadyInvited();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_StudentAlreadyInvitedFailure value)
+        studentAlreadyInvited,
+    required TResult Function(_StudentAlreadyExistFailure value)
+        studentAlreadyExist,
+  }) {
+    return studentAlreadyInvited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_StudentAlreadyInvitedFailure value)?
+        studentAlreadyInvited,
+    TResult Function(_StudentAlreadyExistFailure value)? studentAlreadyExist,
+    required TResult orElse(),
+  }) {
+    if (studentAlreadyInvited != null) {
+      return studentAlreadyInvited(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StudentAlreadyInvitedFailure implements CourseFailure {
+  const factory _StudentAlreadyInvitedFailure() =
+      _$_StudentAlreadyInvitedFailure;
+}
+
+/// @nodoc
+abstract class _$StudentAlreadyExistFailureCopyWith<$Res> {
+  factory _$StudentAlreadyExistFailureCopyWith(
+          _StudentAlreadyExistFailure value,
+          $Res Function(_StudentAlreadyExistFailure) then) =
+      __$StudentAlreadyExistFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$StudentAlreadyExistFailureCopyWithImpl<$Res>
+    extends _$CourseFailureCopyWithImpl<$Res>
+    implements _$StudentAlreadyExistFailureCopyWith<$Res> {
+  __$StudentAlreadyExistFailureCopyWithImpl(_StudentAlreadyExistFailure _value,
+      $Res Function(_StudentAlreadyExistFailure) _then)
+      : super(_value, (v) => _then(v as _StudentAlreadyExistFailure));
+
+  @override
+  _StudentAlreadyExistFailure get _value =>
+      super._value as _StudentAlreadyExistFailure;
+}
+
+/// @nodoc
+
+class _$_StudentAlreadyExistFailure implements _StudentAlreadyExistFailure {
+  const _$_StudentAlreadyExistFailure();
+
+  @override
+  String toString() {
+    return 'CourseFailure.studentAlreadyExist()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _StudentAlreadyExistFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
+    required TResult Function() studentAlreadyInvited,
+    required TResult Function() studentAlreadyExist,
+  }) {
+    return studentAlreadyExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
+    TResult Function()? studentAlreadyInvited,
+    TResult Function()? studentAlreadyExist,
+    required TResult orElse(),
+  }) {
+    if (studentAlreadyExist != null) {
+      return studentAlreadyExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_StudentAlreadyInvitedFailure value)
+        studentAlreadyInvited,
+    required TResult Function(_StudentAlreadyExistFailure value)
+        studentAlreadyExist,
+  }) {
+    return studentAlreadyExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_StudentAlreadyInvitedFailure value)?
+        studentAlreadyInvited,
+    TResult Function(_StudentAlreadyExistFailure value)? studentAlreadyExist,
+    required TResult orElse(),
+  }) {
+    if (studentAlreadyExist != null) {
+      return studentAlreadyExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StudentAlreadyExistFailure implements CourseFailure {
+  const factory _StudentAlreadyExistFailure() = _$_StudentAlreadyExistFailure;
 }

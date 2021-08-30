@@ -14,8 +14,6 @@ class CourseRepo extends ICoursesRepo {
   @override
   Future<Either<CourseFailure, List<CourseModel>>> getCourses() async {
     final List<CourseModel> courses = [];
-    final List<AssignmentModel> assignments = [];
-    final List<TestModel> tests = [];
 
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
       scopes: [
@@ -25,7 +23,11 @@ class CourseRepo extends ICoursesRepo {
         ClassroomApi.classroomCourseworkStudentsScope,
         ClassroomApi.classroomCourseworkmaterialsScope,
         ClassroomApi.classroomCourseworkMeScope,
-        ClassroomApi.classroomCoursesScope
+        ClassroomApi.classroomCoursesScope,
+        ClassroomApi.classroomRostersScope,
+        ClassroomApi.classroomRostersReadonlyScope,
+        ClassroomApi.classroomProfileEmailsScope,
+        ClassroomApi.classroomProfilePhotosScope,
       ],
     ).signIn();
 
@@ -36,39 +38,209 @@ class CourseRepo extends ICoursesRepo {
 
     final response = await api.courses.list();
 
-    for (final Course course in response.courses!) {
-      final attachmentResponse = await api.courses.courseWork.list(course.id!);
+    if (response.courses != null) {
+      for (final Course course in response.courses!) {
+        final List<Teacher> teachers = [];
+        final List<Student> students = [];
 
-      for (final attachment in attachmentResponse.courseWork!) {
-        final AssignmentModel assignment = AssignmentModel(
-            id: int.parse(attachment.id!),
-            name: attachment.title!,
-            description: attachment.description);
+        final teachersResponse = await api.courses.teachers.list(course.id!);
+        final studentsResponse = await api.courses.students.list(course.id!);
 
-        final TestModel test = TestModel(
-          id: int.parse(attachment.id!),
-          name: attachment.title!,
-          description: attachment.description,
+        if (teachersResponse.teachers != null) {
+          for (final teacher in teachersResponse.teachers!) {
+            teachers.add(teacher);
+          }
+        }
+
+        if (studentsResponse.students != null) {
+          for (final student in studentsResponse.students!) {
+            students.add(student);
+          }
+        }
+
+        final CourseModel courseModel = CourseModel(
+          id: course.id!,
+          name: course.name!,
+          teachers: teachers,
+          students: students,
         );
 
-        if (attachment.workType == "ASSIGNMENT") {
-          assignments.add(assignment);
-        } else {
-          tests.add(test);
-        }
+        courses.add(courseModel);
       }
-
-      final CourseModel courseModel = CourseModel(
-        id: int.parse(course.id!),
-        name: course.name!,
-        assignments: assignments,
-        tests: tests,
-      );
-
-      courses.add(courseModel);
     }
 
     return Right(courses);
+  }
+
+  @override
+  Future<Either<CourseFailure, Unit>> createCourse(String name) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          ClassroomApi.classroomCoursesReadonlyScope,
+          ClassroomApi.classroomCourseworkMeReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsScope,
+          ClassroomApi.classroomCourseworkmaterialsScope,
+          ClassroomApi.classroomCourseworkMeScope,
+          ClassroomApi.classroomCoursesScope
+        ],
+      ).signIn();
+
+      final GoogleAPIClient httpClient =
+          GoogleAPIClient(await googleUser!.authHeaders);
+
+      final api = ClassroomApi(httpClient);
+
+      final Course request = Course(ownerId: googleUser.id, name: name);
+
+      await api.courses.create(request);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(CourseFailure.clientFailure());
+    }
+  }
+
+  @override
+  Future<Either<CourseFailure, Unit>> addStudentToCourse({
+    required String courseId,
+    required String studentEmail,
+  }) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          ClassroomApi.classroomCoursesReadonlyScope,
+          ClassroomApi.classroomCourseworkMeReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsScope,
+          ClassroomApi.classroomCourseworkmaterialsScope,
+          ClassroomApi.classroomCourseworkMeScope,
+          ClassroomApi.classroomCoursesScope,
+          ClassroomApi.classroomProfileEmailsScope,
+          ClassroomApi.classroomProfilePhotosScope,
+          ClassroomApi.classroomRostersScope,
+        ],
+      ).signIn();
+
+      final GoogleAPIClient httpClient =
+          GoogleAPIClient(await googleUser!.authHeaders);
+
+      final api = ClassroomApi(httpClient);
+
+      final request = Invitation(
+        courseId: courseId,
+        role: "STUDENT",
+        userId: studentEmail,
+      );
+
+      await api.invitations.create(request);
+      return const Right(unit);
+    } catch (e) {
+      if (e is DetailedApiRequestError) {
+        if (e.status == 409) {
+          return const Left(CourseFailure.studentAlreadyInvited());
+        } else if (e.status == 403) {
+          return const Left(CourseFailure.studentAlreadyExist());
+        } else {
+          return const Left(CourseFailure.clientFailure());
+        }
+      } else {
+        return const Left(CourseFailure.clientFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<CourseFailure, Unit>> deleteCourse(String courseId) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          ClassroomApi.classroomCoursesReadonlyScope,
+          ClassroomApi.classroomCourseworkMeReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsScope,
+          ClassroomApi.classroomCourseworkmaterialsScope,
+          ClassroomApi.classroomCourseworkMeScope,
+          ClassroomApi.classroomCoursesScope,
+          ClassroomApi.classroomProfileEmailsScope,
+          ClassroomApi.classroomProfilePhotosScope,
+          ClassroomApi.classroomRostersScope,
+        ],
+      ).signIn();
+
+      final GoogleAPIClient httpClient =
+          GoogleAPIClient(await googleUser!.authHeaders);
+
+      final api = ClassroomApi(httpClient);
+      await api.courses.delete(courseId);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(CourseFailure.serverFailure());
+    }
+  }
+
+  @override
+  Future<Either<CourseFailure, Unit>> removeStudentFromCourse(
+      {required String courseId, required String studentEmail}) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          ClassroomApi.classroomCoursesReadonlyScope,
+          ClassroomApi.classroomCourseworkMeReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsScope,
+          ClassroomApi.classroomCourseworkmaterialsScope,
+          ClassroomApi.classroomCourseworkMeScope,
+          ClassroomApi.classroomCoursesScope,
+          ClassroomApi.classroomProfileEmailsScope,
+          ClassroomApi.classroomProfilePhotosScope,
+          ClassroomApi.classroomRostersScope,
+        ],
+      ).signIn();
+
+      final GoogleAPIClient httpClient =
+          GoogleAPIClient(await googleUser!.authHeaders);
+
+      final api = ClassroomApi(httpClient);
+      await api.courses.students.delete(courseId, studentEmail);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(CourseFailure.serverFailure());
+    }
+  }
+
+  @override
+  Future<Either<CourseFailure, Unit>> updateCourse({
+    required String name,
+    required String courseId,
+  }) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          ClassroomApi.classroomCoursesReadonlyScope,
+          ClassroomApi.classroomCourseworkMeReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
+          ClassroomApi.classroomCourseworkStudentsScope,
+          ClassroomApi.classroomCourseworkmaterialsScope,
+          ClassroomApi.classroomCourseworkMeScope,
+          ClassroomApi.classroomCoursesScope,
+          ClassroomApi.classroomProfileEmailsScope,
+          ClassroomApi.classroomProfilePhotosScope,
+          ClassroomApi.classroomRostersScope,
+        ],
+      ).signIn();
+
+      final GoogleAPIClient httpClient =
+          GoogleAPIClient(await googleUser!.authHeaders);
+
+      final api = ClassroomApi(httpClient);
+      final Course request = Course(ownerId: googleUser.id, name: name);
+
+      await api.courses.update(request, courseId);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(CourseFailure.serverFailure());
+    }
   }
 }
 

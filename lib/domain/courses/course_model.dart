@@ -1,52 +1,33 @@
+import 'package:googleapis/classroom/v1.dart';
+
 class CourseModel {
   const CourseModel({
     required this.id,
     required this.name,
     this.description,
-    this.assignments,
-    this.tests,
+    this.students,
+    this.teachers,
   });
 
-  final int id;
+  final String id;
   final String name;
   final String? description;
-  final List<AssignmentModel>? assignments;
-  final List<TestModel>? tests;
+  final List<Student>? students;
+  final List<Teacher>? teachers;
 
   CourseModel copyWith({
-    int? id,
+    String? id,
     String? name,
     String? description,
-    List<AssignmentModel>? assignments,
-    List<TestModel>? tests,
+    List<Student>? students,
+    List<Invitation>? invitations,
+    List<Teacher>? teachers,
   }) =>
       CourseModel(
         id: id ?? this.id,
         name: name ?? this.name,
         description: description ?? this.description,
-        assignments: assignments ?? this.assignments,
-        tests: tests ?? this.tests,
+        students: students ?? this.students,
+        teachers: teachers ?? this.teachers,
       );
-}
-
-class AssignmentModel {
-  const AssignmentModel({
-    required this.id,
-    required this.name,
-    this.description,
-  });
-  final int id;
-  final String name;
-  final String? description;
-}
-
-class TestModel {
-  const TestModel({
-    required this.id,
-    required this.name,
-    this.description,
-  });
-  final int id;
-  final String name;
-  final String? description;
 }

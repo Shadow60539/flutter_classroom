@@ -20,6 +20,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          CourseBloc.addEventWithoutContext(
+              CourseEvent.createCourse("New Course"));
+        },
+      ),
       body: BlocConsumer<CourseBloc, CourseState>(
         listener: (context, state) {
           // TODO: implement listener
