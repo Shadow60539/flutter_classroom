@@ -1,3 +1,5 @@
+import 'package:classroom/application/auth/auth_bloc.dart';
+import 'package:classroom/application/course/course_bloc.dart';
 import 'package:classroom/core/services/navigation_service.dart';
 import 'package:classroom/injection.dart';
 import 'package:classroom/presentation/auth/pages/auth_checker_page.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:classroom/application/auth/auth_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class AppWidget extends StatelessWidget {
   AppWidget({Key? key}) : super(key: key);
 
@@ -14,17 +17,18 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<AuthBloc>(),
-      child: ScreenUtilInit(
-        designSize: const Size(414, 896),
-        builder: () {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            key: _navigationService.navigationKey,
-            home: const SignupPage(),
-          );
-        },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<AuthBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<CourseBloc>(),
+        ),
+      ],
+      child: MaterialApp(
+        key: _navigationService.navigationKey,
+        home: const HomePage(),
       ),
     );
   }

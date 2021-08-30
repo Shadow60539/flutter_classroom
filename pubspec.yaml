@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  auto_route: ^2.3.0
+  auto_route_generator: any
   cloud_firestore: ^2.5.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
