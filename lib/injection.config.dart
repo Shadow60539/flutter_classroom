@@ -37,7 +37,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i8.AuthRepo(get<_i4.FirebaseAuth>(), get<_i6.GoogleSignIn>(),
           get<_i5.FirebaseFirestore>(), get<_i3.Box<dynamic>>()),
       registerFor: {_prod});
-  gh.factory<_i9.ICoursesRepo>(() => _i10.CourseRepo(), registerFor: {_prod});
+  gh.factory<_i9.ICoursesRepo>(() => _i10.CourseRepo(get<_i3.Box<dynamic>>()),
+      registerFor: {_prod});
   gh.lazySingleton<_i11.NavigationService>(() => _i11.NavigationService());
   gh.factory<_i12.AuthBloc>(() => _i12.AuthBloc(get<_i7.IAuthRepo>()),
       registerFor: {_prod});

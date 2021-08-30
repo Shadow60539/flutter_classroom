@@ -10,6 +10,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 
+const ERROR_INVALID_EMAIL = "invalid-email";
+const ERROR_EMAIL_ALREADY_IN_USER = "email-already-in-use";
+const ERROR_WRONG_PASSWORD = "wrong-password";
+const ERROR_USER_NOT_FOUND = "user-not-found";
+const ERROR_TOO_MANY_REQUESTS = "too-many-requests";
+
 @Injectable(as: IAuthRepo)
 @prod
 class AuthRepo extends IAuthRepo {
@@ -33,13 +39,71 @@ class AuthRepo extends IAuthRepo {
   }) async {
     try {
       final userCollection = firebaseFirestore.collection(USER_COLLECTION);
+      final emailCollection = firebaseFirestore.collection(EMAIL_COLLECTION);
       final snapshot = await userCollection.doc(userName).get();
+      final emailSnapshot = await emailCollection.doc(email).get();
 
       if (snapshot.data() == null) {
-        final data = {"email": email};
-        await userCollection.doc(userName).set(data);
+        if (emailSnapshot.data() == null) {
+          final data = {"email": email};
+          await userCollection.doc(userName).set(data);
+          await emailCollection.doc(email).set(data);
+          final UserCredential userCredential = await firebaseAuth
+              .createUserWithEmailAndPassword(email: email, password: password);
+          await box.put(
+              HiveBoxNames.user,
+              UserModel(
+                email: email,
+                id: userCredential.user!.uid,
+                userName: userName,
+              ));
+
+          final UserModel userModel = UserModel.fromCredential(userCredential);
+
+          return Right(userModel.copyWith(userName: userName));
+        } else {
+          return const Left(AuthFailure.userAlreadyExist());
+        }
+      } else {
+        return const Left(AuthFailure.usernameAlreadyTaken());
+      }
+    } catch (e) {
+      final FirebaseAuthException _exception = e as FirebaseAuthException;
+
+      switch (_exception.code) {
+        case ERROR_INVALID_EMAIL:
+          return const Left(AuthFailure.invalidEmail());
+        case ERROR_WRONG_PASSWORD:
+          return const Left(AuthFailure.invalidPassword());
+        case ERROR_USER_NOT_FOUND:
+          return const Left(AuthFailure.noUserFound());
+        case ERROR_TOO_MANY_REQUESTS:
+          return const Left(AuthFailure.server());
+        case ERROR_EMAIL_ALREADY_IN_USER:
+          return const Left(AuthFailure.userAlreadyExist());
+
+        default:
+          return const Left(AuthFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword(
+      {required String userName, required String password}) async {
+    try {
+      final userCollection = firebaseFirestore.collection(USER_COLLECTION);
+      final snapshot = await userCollection.doc(userName).get();
+
+      String? email;
+
+      if (snapshot.data() != null) {
+        final Map<String, dynamic> data = snapshot.data()!;
+        email = data["email"] as String;
+
         final UserCredential userCredential = await firebaseAuth
-            .createUserWithEmailAndPassword(email: email, password: password);
+            .signInWithEmailAndPassword(email: email, password: password);
+
         await box.put(
             HiveBoxNames.user,
             UserModel(
@@ -52,41 +116,24 @@ class AuthRepo extends IAuthRepo {
 
         return Right(userModel.copyWith(userName: userName));
       } else {
-        return const Left(AuthFailure.userAlreadyExist());
+        return const Left(AuthFailure.noUserFound());
       }
-    } catch (e) {
-      return const Left(AuthFailure.clientAuthFailure());
-    }
-  }
+    } on Exception catch (e) {
+      final FirebaseAuthException _exception = e as FirebaseAuthException;
 
-  @override
-  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword(
-      {required String userName, required String password}) async {
-    final userCollection = firebaseFirestore.collection(USER_COLLECTION);
-    final snapshot = await userCollection.doc(userName).get();
+      switch (_exception.code) {
+        case ERROR_INVALID_EMAIL:
+          return const Left(AuthFailure.invalidEmail());
+        case ERROR_WRONG_PASSWORD:
+          return const Left(AuthFailure.invalidPassword());
+        case ERROR_USER_NOT_FOUND:
+          return const Left(AuthFailure.noUserFound());
+        case ERROR_TOO_MANY_REQUESTS:
+          return const Left(AuthFailure.server());
 
-    String? email;
-
-    if (snapshot.data() != null) {
-      final Map<String, dynamic> data = snapshot.data()!;
-      email = data["email"] as String;
-
-      final UserCredential userCredential = await firebaseAuth
-          .signInWithEmailAndPassword(email: email, password: password);
-
-      await box.put(
-          HiveBoxNames.user,
-          UserModel(
-            email: email,
-            id: userCredential.user!.uid,
-            userName: userName,
-          ));
-
-      final UserModel userModel = UserModel.fromCredential(userCredential);
-
-      return Right(userModel.copyWith(userName: userName));
-    } else {
-      return const Left(AuthFailure.noUserFound());
+        default:
+          return const Left(AuthFailure.unexpected());
+      }
     }
   }
 
@@ -96,7 +143,7 @@ class AuthRepo extends IAuthRepo {
         await googleSignIn.signIn();
 
     if (googleSignInAccount == null) {
-      throw const AuthFailure.googleSignInAborted();
+      return const Left(AuthFailure.googleSignInAborted());
     } else {
       try {
         final GoogleSignInAuthentication googleSignInAuthentication =
@@ -133,7 +180,7 @@ class AuthRepo extends IAuthRepo {
 
         return Right(userModel.copyWith(userName: userName));
       } on PlatformException {
-        throw const AuthFailure.googleSignInAccountRetrieve();
+        return const Left(AuthFailure.googleSignInAccountRetrieve());
       }
     }
   }
@@ -142,14 +189,8 @@ class AuthRepo extends IAuthRepo {
   Future<Either<AuthFailure, Unit>> registerRole(int roleId) async {
     try {
       final UserModel userModel = box.get(HiveBoxNames.user) as UserModel;
+      box.put(HiveBoxNames.user, userModel.copyWith(roleId: roleId));
 
-      final String userName =
-          userModel.userName == null ? userModel.id! : userModel.userName!;
-
-      final data = {"role": roleId};
-
-      final userCollection = firebaseFirestore.collection(USER_COLLECTION);
-      await userCollection.doc(userName).update(data);
       return const Right(unit);
     } catch (e) {
       return const Left(AuthFailure.clientAuthFailure());

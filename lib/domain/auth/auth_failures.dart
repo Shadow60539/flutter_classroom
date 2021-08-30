@@ -8,6 +8,7 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidPassword() = _InvalidPasswordFailure;
   const factory AuthFailure.noUserFound() = _NoUserFailure;
   const factory AuthFailure.userAlreadyExist() = _UserAlreadyExistFailure;
+  const factory AuthFailure.usernameAlreadyTaken() = _UsernameAlreadyTakenFailure;
   const factory AuthFailure.clientAuthFailure() = _ClientAuthFailure;
   const factory AuthFailure.server() = _AuthServerFailure;
   const factory AuthFailure.unexpected() = _UnexpectedAuthFailure;

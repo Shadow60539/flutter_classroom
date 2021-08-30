@@ -32,6 +32,10 @@ class _$AuthFailureTearOff {
     return const _UserAlreadyExistFailure();
   }
 
+  _UsernameAlreadyTakenFailure usernameAlreadyTaken() {
+    return const _UsernameAlreadyTakenFailure();
+  }
+
   _ClientAuthFailure clientAuthFailure() {
     return const _ClientAuthFailure();
   }
@@ -64,6 +68,7 @@ mixin _$AuthFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -77,6 +82,7 @@ mixin _$AuthFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -91,6 +97,8 @@ mixin _$AuthFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -106,6 +114,7 @@ mixin _$AuthFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -177,6 +186,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -193,6 +203,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -213,6 +224,8 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -231,6 +244,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -294,6 +308,7 @@ class _$_InvalidPasswordFailure implements _InvalidPasswordFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -310,6 +325,7 @@ class _$_InvalidPasswordFailure implements _InvalidPasswordFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -330,6 +346,8 @@ class _$_InvalidPasswordFailure implements _InvalidPasswordFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -348,6 +366,7 @@ class _$_InvalidPasswordFailure implements _InvalidPasswordFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -410,6 +429,7 @@ class _$_NoUserFailure implements _NoUserFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -426,6 +446,7 @@ class _$_NoUserFailure implements _NoUserFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -446,6 +467,8 @@ class _$_NoUserFailure implements _NoUserFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -464,6 +487,7 @@ class _$_NoUserFailure implements _NoUserFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -528,6 +552,7 @@ class _$_UserAlreadyExistFailure implements _UserAlreadyExistFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -544,6 +569,7 @@ class _$_UserAlreadyExistFailure implements _UserAlreadyExistFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -564,6 +590,8 @@ class _$_UserAlreadyExistFailure implements _UserAlreadyExistFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -582,6 +610,7 @@ class _$_UserAlreadyExistFailure implements _UserAlreadyExistFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -599,6 +628,131 @@ class _$_UserAlreadyExistFailure implements _UserAlreadyExistFailure {
 
 abstract class _UserAlreadyExistFailure implements AuthFailure {
   const factory _UserAlreadyExistFailure() = _$_UserAlreadyExistFailure;
+}
+
+/// @nodoc
+abstract class _$UsernameAlreadyTakenFailureCopyWith<$Res> {
+  factory _$UsernameAlreadyTakenFailureCopyWith(
+          _UsernameAlreadyTakenFailure value,
+          $Res Function(_UsernameAlreadyTakenFailure) then) =
+      __$UsernameAlreadyTakenFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UsernameAlreadyTakenFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$UsernameAlreadyTakenFailureCopyWith<$Res> {
+  __$UsernameAlreadyTakenFailureCopyWithImpl(
+      _UsernameAlreadyTakenFailure _value,
+      $Res Function(_UsernameAlreadyTakenFailure) _then)
+      : super(_value, (v) => _then(v as _UsernameAlreadyTakenFailure));
+
+  @override
+  _UsernameAlreadyTakenFailure get _value =>
+      super._value as _UsernameAlreadyTakenFailure;
+}
+
+/// @nodoc
+
+class _$_UsernameAlreadyTakenFailure implements _UsernameAlreadyTakenFailure {
+  const _$_UsernameAlreadyTakenFailure();
+
+  @override
+  String toString() {
+    return 'AuthFailure.usernameAlreadyTaken()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _UsernameAlreadyTakenFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function() noUserFound,
+    required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
+    required TResult Function() clientAuthFailure,
+    required TResult Function() server,
+    required TResult Function() unexpected,
+    required TResult Function() googleSignInAborted,
+    required TResult Function() googleSignInAccountRetrieve,
+  }) {
+    return usernameAlreadyTaken();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function()? noUserFound,
+    TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
+    TResult Function()? clientAuthFailure,
+    TResult Function()? server,
+    TResult Function()? unexpected,
+    TResult Function()? googleSignInAborted,
+    TResult Function()? googleSignInAccountRetrieve,
+    required TResult orElse(),
+  }) {
+    if (usernameAlreadyTaken != null) {
+      return usernameAlreadyTaken();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidPasswordFailure value) invalidPassword,
+    required TResult Function(_NoUserFailure value) noUserFound,
+    required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
+    required TResult Function(_ClientAuthFailure value) clientAuthFailure,
+    required TResult Function(_AuthServerFailure value) server,
+    required TResult Function(_UnexpectedAuthFailure value) unexpected,
+    required TResult Function(_GoogleSignInAbortedFailure value)
+        googleSignInAborted,
+    required TResult Function(_GoogleSignInAccountRetrieveFailure value)
+        googleSignInAccountRetrieve,
+  }) {
+    return usernameAlreadyTaken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidPasswordFailure value)? invalidPassword,
+    TResult Function(_NoUserFailure value)? noUserFound,
+    TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
+    TResult Function(_ClientAuthFailure value)? clientAuthFailure,
+    TResult Function(_AuthServerFailure value)? server,
+    TResult Function(_UnexpectedAuthFailure value)? unexpected,
+    TResult Function(_GoogleSignInAbortedFailure value)? googleSignInAborted,
+    TResult Function(_GoogleSignInAccountRetrieveFailure value)?
+        googleSignInAccountRetrieve,
+    required TResult orElse(),
+  }) {
+    if (usernameAlreadyTaken != null) {
+      return usernameAlreadyTaken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UsernameAlreadyTakenFailure implements AuthFailure {
+  const factory _UsernameAlreadyTakenFailure() = _$_UsernameAlreadyTakenFailure;
 }
 
 /// @nodoc
@@ -645,6 +799,7 @@ class _$_ClientAuthFailure implements _ClientAuthFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -661,6 +816,7 @@ class _$_ClientAuthFailure implements _ClientAuthFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -681,6 +837,8 @@ class _$_ClientAuthFailure implements _ClientAuthFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -699,6 +857,7 @@ class _$_ClientAuthFailure implements _ClientAuthFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -762,6 +921,7 @@ class _$_AuthServerFailure implements _AuthServerFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -778,6 +938,7 @@ class _$_AuthServerFailure implements _AuthServerFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -798,6 +959,8 @@ class _$_AuthServerFailure implements _AuthServerFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -816,6 +979,7 @@ class _$_AuthServerFailure implements _AuthServerFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -879,6 +1043,7 @@ class _$_UnexpectedAuthFailure implements _UnexpectedAuthFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -895,6 +1060,7 @@ class _$_UnexpectedAuthFailure implements _UnexpectedAuthFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -915,6 +1081,8 @@ class _$_UnexpectedAuthFailure implements _UnexpectedAuthFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -933,6 +1101,7 @@ class _$_UnexpectedAuthFailure implements _UnexpectedAuthFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -998,6 +1167,7 @@ class _$_GoogleSignInAbortedFailure implements _GoogleSignInAbortedFailure {
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -1014,6 +1184,7 @@ class _$_GoogleSignInAbortedFailure implements _GoogleSignInAbortedFailure {
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -1034,6 +1205,8 @@ class _$_GoogleSignInAbortedFailure implements _GoogleSignInAbortedFailure {
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -1052,6 +1225,7 @@ class _$_GoogleSignInAbortedFailure implements _GoogleSignInAbortedFailure {
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,
@@ -1120,6 +1294,7 @@ class _$_GoogleSignInAccountRetrieveFailure
     required TResult Function() invalidPassword,
     required TResult Function() noUserFound,
     required TResult Function() userAlreadyExist,
+    required TResult Function() usernameAlreadyTaken,
     required TResult Function() clientAuthFailure,
     required TResult Function() server,
     required TResult Function() unexpected,
@@ -1136,6 +1311,7 @@ class _$_GoogleSignInAccountRetrieveFailure
     TResult Function()? invalidPassword,
     TResult Function()? noUserFound,
     TResult Function()? userAlreadyExist,
+    TResult Function()? usernameAlreadyTaken,
     TResult Function()? clientAuthFailure,
     TResult Function()? server,
     TResult Function()? unexpected,
@@ -1156,6 +1332,8 @@ class _$_GoogleSignInAccountRetrieveFailure
     required TResult Function(_InvalidPasswordFailure value) invalidPassword,
     required TResult Function(_NoUserFailure value) noUserFound,
     required TResult Function(_UserAlreadyExistFailure value) userAlreadyExist,
+    required TResult Function(_UsernameAlreadyTakenFailure value)
+        usernameAlreadyTaken,
     required TResult Function(_ClientAuthFailure value) clientAuthFailure,
     required TResult Function(_AuthServerFailure value) server,
     required TResult Function(_UnexpectedAuthFailure value) unexpected,
@@ -1174,6 +1352,7 @@ class _$_GoogleSignInAccountRetrieveFailure
     TResult Function(_InvalidPasswordFailure value)? invalidPassword,
     TResult Function(_NoUserFailure value)? noUserFound,
     TResult Function(_UserAlreadyExistFailure value)? userAlreadyExist,
+    TResult Function(_UsernameAlreadyTakenFailure value)? usernameAlreadyTaken,
     TResult Function(_ClientAuthFailure value)? clientAuthFailure,
     TResult Function(_AuthServerFailure value)? server,
     TResult Function(_UnexpectedAuthFailure value)? unexpected,

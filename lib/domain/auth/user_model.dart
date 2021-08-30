@@ -10,6 +10,7 @@ class UserModel {
     required this.email,
     required this.id,
     this.userName,
+    this.gmail,
   });
 
   @HiveField(0)
@@ -20,6 +21,8 @@ class UserModel {
   final String? userName;
   @HiveField(3)
   final String? id;
+  @HiveField(4)
+  final String? gmail;
 
   factory UserModel.fromCredential(UserCredential userCredential) => UserModel(
         email: userCredential.user!.email!,
@@ -31,9 +34,11 @@ class UserModel {
     String? email,
     String? userName,
     String? id,
+    String? gmail,
   }) =>
       UserModel(
         email: email ?? this.email,
+        gmail: gmail ?? this.gmail,
         id: id ?? this.id,
         roleId: roleId ?? this.roleId,
         userName: userName ?? this.userName,

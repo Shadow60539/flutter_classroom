@@ -1,9 +1,12 @@
+import 'package:classroom/core/strings.dart';
+import 'package:classroom/domain/auth/user_model.dart';
 import 'package:classroom/domain/courses/course_model.dart';
 import 'package:classroom/domain/courses/courses_failure.dart';
 import 'package:classroom/domain/courses/i_courses_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:googleapis/classroom/v1.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:injectable/injectable.dart';
@@ -11,6 +14,9 @@ import 'package:injectable/injectable.dart';
 @prod
 @Injectable(as: ICoursesRepo)
 class CourseRepo extends ICoursesRepo {
+  CourseRepo(this.box);
+
+  final Box box;
   @override
   Future<Either<CourseFailure, List<CourseModel>>> getCourses() async {
     final List<CourseModel> courses = [];
@@ -35,6 +41,11 @@ class CourseRepo extends ICoursesRepo {
         GoogleAPIClient(await googleUser!.authHeaders);
 
     final api = ClassroomApi(httpClient);
+
+    final UserModel cacheUser = await box.get(HiveBoxNames.user) as UserModel;
+
+    await box.put(
+        HiveBoxNames.user, cacheUser.copyWith(gmail: googleUser.email));
 
     final response = await api.courses.list();
 
@@ -73,7 +84,7 @@ class CourseRepo extends ICoursesRepo {
   }
 
   @override
-  Future<Either<CourseFailure, Unit>> createCourse(String name) async {
+  Future<Either<CourseFailure, CourseModel>> createCourse(String name) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [
@@ -94,8 +105,34 @@ class CourseRepo extends ICoursesRepo {
 
       final Course request = Course(ownerId: googleUser.id, name: name);
 
-      await api.courses.create(request);
-      return const Right(unit);
+      final newCourse = await api.courses.create(request);
+
+      final List<Teacher> teachers = [];
+      final List<Student> students = [];
+
+      final teachersResponse = await api.courses.teachers.list(newCourse.id!);
+      final studentsResponse = await api.courses.students.list(newCourse.id!);
+
+      if (teachersResponse.teachers != null) {
+        for (final teacher in teachersResponse.teachers!) {
+          teachers.add(teacher);
+        }
+      }
+
+      if (studentsResponse.students != null) {
+        for (final student in studentsResponse.students!) {
+          students.add(student);
+        }
+      }
+
+      final CourseModel courseModel = CourseModel(
+        id: newCourse.id!,
+        name: newCourse.name!,
+        teachers: teachers,
+        students: students,
+      );
+
+      return Right(courseModel);
     } catch (e) {
       return const Left(CourseFailure.clientFailure());
     }

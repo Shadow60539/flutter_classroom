@@ -42,7 +42,10 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         final failureOrSuccess = await _coursesRepo.createCourse(e.name);
         yield failureOrSuccess.fold(
           (l) => state.copyWith(createCourseOption: Some(Left(l))),
-          (r) => state.copyWith(createCourseOption: Some(Right(r))),
+          (r) {
+            state.courses.insert(0, r);
+            return state.copyWith(createCourseOption: const Some(Right(unit)));
+          },
         );
       },
       addStudentToCourse: (e) async* {
@@ -68,7 +71,14 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             await _coursesRepo.updateCourse(courseId: e.courseId, name: e.name);
         yield failureOrSuccess.fold(
           (l) => state.copyWith(updateCourseOption: Some(Left(l))),
-          (r) => state.copyWith(updateCourseOption: Some(Right(r))),
+          (r) {
+            final index =
+                state.courses.indexWhere((element) => element.id == e.courseId);
+            final updatedCourse = state.courses[index].copyWith(name: e.name);
+            state.courses.removeAt(index);
+            state.courses.insert(index, updatedCourse);
+            return state.copyWith(updateCourseOption: Some(Right(r)));
+          },
         );
       },
       removeStudentFromCourse: (e) async* {
