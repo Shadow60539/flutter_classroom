@@ -22,4 +22,6 @@ abstract class IAuthRepo {
 
   /// Register user role:- [Student, Teacher]
   Future<Either<AuthFailure, Unit>> registerRole(int roleId);
+  Future<Either<AuthFailure, Unit>> switchRole();
+  Future<Either<AuthFailure, Unit>> signOut();
 }

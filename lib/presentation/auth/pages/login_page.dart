@@ -2,7 +2,6 @@ import 'package:classroom/application/auth/auth_bloc.dart';
 import 'package:classroom/presentation/auth/pages/role_selection_page.dart';
 import 'package:classroom/presentation/auth/pages/sign_up_page.dart';
 import 'package:classroom/presentation/core/validator.dart';
-import 'package:classroom/presentation/home/pages/home_page.dart';
 import 'package:fancy_text_reveal/fancy_text_reveal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -105,8 +104,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 fontSize: 12,
               );
             },
-            (r) => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const RoleSelectionPage())),
+            (r) => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const RoleSelectionPage())),
           ),
         );
         state.signInUsingGoogleOption.fold(
@@ -128,8 +127,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 fontSize: 12,
               );
             },
-            (r) => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const HomePage())),
+            (r) => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const RoleSelectionPage())),
           ),
         );
       },
@@ -251,6 +250,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       width: double.maxFinite,
                       child: TextButton(
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           showErrors = true;
                           if (isValid) {
                             isLoading = true;

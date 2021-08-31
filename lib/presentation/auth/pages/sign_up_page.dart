@@ -302,6 +302,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       width: double.maxFinite,
                       child: TextButton(
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           showErrors = true;
                           if (isValid) {
                             isLoading = true;

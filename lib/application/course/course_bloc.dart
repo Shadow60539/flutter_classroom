@@ -29,7 +29,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     CourseEvent event,
   ) async* {
     yield* event.map(
-      getCourses: (e) async* {
+      getCourses: (_) async* {
         yield state.copyWith(getCoursesOption: const None());
         final failureOrSuccess = await _coursesRepo.getCourses();
         yield failureOrSuccess.fold(
@@ -62,7 +62,12 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         final failureOrSuccess = await _coursesRepo.deleteCourse(e.courseId);
         yield failureOrSuccess.fold(
           (l) => state.copyWith(deleteCourseOption: Some(Left(l))),
-          (r) => state.copyWith(deleteCourseOption: Some(Right(r))),
+          (r) {
+            final index =
+                state.courses.indexWhere((element) => element.id == e.courseId);
+            state.courses.removeAt(index);
+            return state.copyWith(deleteCourseOption: Some(Right(r)));
+          },
         );
       },
       updateCourse: (e) async* {
@@ -77,7 +82,10 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             final updatedCourse = state.courses[index].copyWith(name: e.name);
             state.courses.removeAt(index);
             state.courses.insert(index, updatedCourse);
-            return state.copyWith(updateCourseOption: Some(Right(r)));
+            return state.copyWith(
+              updateCourseOption: Some(Right(r)),
+              updatedCourseName: e.name,
+            );
           },
         );
       },
@@ -87,8 +95,22 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             courseId: e.courseId, studentEmail: e.studentEmail);
         yield failureOrSuccess.fold(
           (l) => state.copyWith(removeStudentOption: Some(Left(l))),
-          (r) => state.copyWith(removeStudentOption: Some(Right(r))),
+          (r) {
+            state.courses
+                .firstWhere((element) => element.id == e.courseId)
+                .students!
+                .removeWhere((element) =>
+                    element.profile!.emailAddress == e.studentEmail);
+
+            return state.copyWith(removeStudentOption: Some(Right(r)));
+          },
         );
+      },
+      removedUpdatedCourseName: (_) async* {
+        yield state.copyWith(updatedCourseName: null);
+      },
+      reset: (_) async* {
+        yield CourseState.initial();
       },
     );
   }

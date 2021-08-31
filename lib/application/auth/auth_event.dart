@@ -14,4 +14,6 @@ class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.signInUsingGoogle() = _SignInUsingGoogle;
   const factory AuthEvent.registerRole(int roleId) = _RegisterUserRole;
+  const factory AuthEvent.switchRole() = _SwitchRole;
+  const factory AuthEvent.signOut() = _SignOut;
 }

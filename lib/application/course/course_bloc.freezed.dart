@@ -54,6 +54,14 @@ class _$CourseEventTearOff {
       studentEmail: studentEmail,
     );
   }
+
+  _RemoveUpdatedCourseName removedUpdatedCourseName() {
+    return const _RemoveUpdatedCourseName();
+  }
+
+  _Reset reset() {
+    return const _Reset();
+  }
 }
 
 /// @nodoc
@@ -71,6 +79,8 @@ mixin _$CourseEvent {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +92,8 @@ mixin _$CourseEvent {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +106,9 @@ mixin _$CourseEvent {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,6 +119,8 @@ mixin _$CourseEvent {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +189,8 @@ class _$_GetCourses implements _GetCourses {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return getCourses();
   }
@@ -186,6 +205,8 @@ class _$_GetCourses implements _GetCourses {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (getCourses != null) {
@@ -204,6 +225,9 @@ class _$_GetCourses implements _GetCourses {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return getCourses(this);
   }
@@ -217,6 +241,8 @@ class _$_GetCourses implements _GetCourses {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (getCourses != null) {
@@ -302,6 +328,8 @@ class _$_CreateCourse implements _CreateCourse {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return createCourse(name);
   }
@@ -316,6 +344,8 @@ class _$_CreateCourse implements _CreateCourse {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (createCourse != null) {
@@ -334,6 +364,9 @@ class _$_CreateCourse implements _CreateCourse {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return createCourse(this);
   }
@@ -347,6 +380,8 @@ class _$_CreateCourse implements _CreateCourse {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (createCourse != null) {
@@ -438,6 +473,8 @@ class _$_DeleteCourse implements _DeleteCourse {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return deleteCourse(courseId);
   }
@@ -452,6 +489,8 @@ class _$_DeleteCourse implements _DeleteCourse {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (deleteCourse != null) {
@@ -470,6 +509,9 @@ class _$_DeleteCourse implements _DeleteCourse {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return deleteCourse(this);
   }
@@ -483,6 +525,8 @@ class _$_DeleteCourse implements _DeleteCourse {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (deleteCourse != null) {
@@ -585,6 +629,8 @@ class _$_UpdateCourse implements _UpdateCourse {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return updateCourse(courseId, name);
   }
@@ -599,6 +645,8 @@ class _$_UpdateCourse implements _UpdateCourse {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (updateCourse != null) {
@@ -617,6 +665,9 @@ class _$_UpdateCourse implements _UpdateCourse {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return updateCourse(this);
   }
@@ -630,6 +681,8 @@ class _$_UpdateCourse implements _UpdateCourse {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (updateCourse != null) {
@@ -737,6 +790,8 @@ class _$_AddStudentToCourse implements _AddStudentToCourse {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return addStudentToCourse(courseId, studentEmail);
   }
@@ -751,6 +806,8 @@ class _$_AddStudentToCourse implements _AddStudentToCourse {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (addStudentToCourse != null) {
@@ -769,6 +826,9 @@ class _$_AddStudentToCourse implements _AddStudentToCourse {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return addStudentToCourse(this);
   }
@@ -782,6 +842,8 @@ class _$_AddStudentToCourse implements _AddStudentToCourse {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (addStudentToCourse != null) {
@@ -892,6 +954,8 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
         addStudentToCourse,
     required TResult Function(String courseId, String studentEmail)
         removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
   }) {
     return removeStudentFromCourse(courseId, studentEmail);
   }
@@ -906,6 +970,8 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
     TResult Function(String courseId, String studentEmail)? addStudentToCourse,
     TResult Function(String courseId, String studentEmail)?
         removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (removeStudentFromCourse != null) {
@@ -924,6 +990,9 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
     required TResult Function(_AddStudentToCourse value) addStudentToCourse,
     required TResult Function(_RemoveStudentFromCourse value)
         removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
   }) {
     return removeStudentFromCourse(this);
   }
@@ -937,6 +1006,8 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
     TResult Function(_UpdateCourse value)? updateCourse,
     TResult Function(_AddStudentToCourse value)? addStudentToCourse,
     TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (removeStudentFromCourse != null) {
@@ -959,11 +1030,240 @@ abstract class _RemoveStudentFromCourse implements CourseEvent {
 }
 
 /// @nodoc
+abstract class _$RemoveUpdatedCourseNameCopyWith<$Res> {
+  factory _$RemoveUpdatedCourseNameCopyWith(_RemoveUpdatedCourseName value,
+          $Res Function(_RemoveUpdatedCourseName) then) =
+      __$RemoveUpdatedCourseNameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RemoveUpdatedCourseNameCopyWithImpl<$Res>
+    extends _$CourseEventCopyWithImpl<$Res>
+    implements _$RemoveUpdatedCourseNameCopyWith<$Res> {
+  __$RemoveUpdatedCourseNameCopyWithImpl(_RemoveUpdatedCourseName _value,
+      $Res Function(_RemoveUpdatedCourseName) _then)
+      : super(_value, (v) => _then(v as _RemoveUpdatedCourseName));
+
+  @override
+  _RemoveUpdatedCourseName get _value =>
+      super._value as _RemoveUpdatedCourseName;
+}
+
+/// @nodoc
+
+class _$_RemoveUpdatedCourseName implements _RemoveUpdatedCourseName {
+  const _$_RemoveUpdatedCourseName();
+
+  @override
+  String toString() {
+    return 'CourseEvent.removedUpdatedCourseName()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _RemoveUpdatedCourseName);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCourses,
+    required TResult Function(String name) createCourse,
+    required TResult Function(String courseId) deleteCourse,
+    required TResult Function(String courseId, String name) updateCourse,
+    required TResult Function(String courseId, String studentEmail)
+        addStudentToCourse,
+    required TResult Function(String courseId, String studentEmail)
+        removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
+  }) {
+    return removedUpdatedCourseName();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCourses,
+    TResult Function(String name)? createCourse,
+    TResult Function(String courseId)? deleteCourse,
+    TResult Function(String courseId, String name)? updateCourse,
+    TResult Function(String courseId, String studentEmail)? addStudentToCourse,
+    TResult Function(String courseId, String studentEmail)?
+        removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (removedUpdatedCourseName != null) {
+      return removedUpdatedCourseName();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCourses value) getCourses,
+    required TResult Function(_CreateCourse value) createCourse,
+    required TResult Function(_DeleteCourse value) deleteCourse,
+    required TResult Function(_UpdateCourse value) updateCourse,
+    required TResult Function(_AddStudentToCourse value) addStudentToCourse,
+    required TResult Function(_RemoveStudentFromCourse value)
+        removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return removedUpdatedCourseName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCourses value)? getCourses,
+    TResult Function(_CreateCourse value)? createCourse,
+    TResult Function(_DeleteCourse value)? deleteCourse,
+    TResult Function(_UpdateCourse value)? updateCourse,
+    TResult Function(_AddStudentToCourse value)? addStudentToCourse,
+    TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (removedUpdatedCourseName != null) {
+      return removedUpdatedCourseName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveUpdatedCourseName implements CourseEvent {
+  const factory _RemoveUpdatedCourseName() = _$_RemoveUpdatedCourseName;
+}
+
+/// @nodoc
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
+
+  @override
+  _Reset get _value => super._value as _Reset;
+}
+
+/// @nodoc
+
+class _$_Reset implements _Reset {
+  const _$_Reset();
+
+  @override
+  String toString() {
+    return 'CourseEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCourses,
+    required TResult Function(String name) createCourse,
+    required TResult Function(String courseId) deleteCourse,
+    required TResult Function(String courseId, String name) updateCourse,
+    required TResult Function(String courseId, String studentEmail)
+        addStudentToCourse,
+    required TResult Function(String courseId, String studentEmail)
+        removeStudentFromCourse,
+    required TResult Function() removedUpdatedCourseName,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCourses,
+    TResult Function(String name)? createCourse,
+    TResult Function(String courseId)? deleteCourse,
+    TResult Function(String courseId, String name)? updateCourse,
+    TResult Function(String courseId, String studentEmail)? addStudentToCourse,
+    TResult Function(String courseId, String studentEmail)?
+        removeStudentFromCourse,
+    TResult Function()? removedUpdatedCourseName,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCourses value) getCourses,
+    required TResult Function(_CreateCourse value) createCourse,
+    required TResult Function(_DeleteCourse value) deleteCourse,
+    required TResult Function(_UpdateCourse value) updateCourse,
+    required TResult Function(_AddStudentToCourse value) addStudentToCourse,
+    required TResult Function(_RemoveStudentFromCourse value)
+        removeStudentFromCourse,
+    required TResult Function(_RemoveUpdatedCourseName value)
+        removedUpdatedCourseName,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCourses value)? getCourses,
+    TResult Function(_CreateCourse value)? createCourse,
+    TResult Function(_DeleteCourse value)? deleteCourse,
+    TResult Function(_UpdateCourse value)? updateCourse,
+    TResult Function(_AddStudentToCourse value)? addStudentToCourse,
+    TResult Function(_RemoveStudentFromCourse value)? removeStudentFromCourse,
+    TResult Function(_RemoveUpdatedCourseName value)? removedUpdatedCourseName,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements CourseEvent {
+  const factory _Reset() = _$_Reset;
+}
+
+/// @nodoc
 class _$CourseStateTearOff {
   const _$CourseStateTearOff();
 
   _CourseState call(
       {required List<CourseModel> courses,
+      required String? updatedCourseName,
       required Option<Either<CourseFailure, List<CourseModel>>>
           getCoursesOption,
       required Option<Either<CourseFailure, Unit>> createCourseOption,
@@ -973,6 +1273,7 @@ class _$CourseStateTearOff {
       required Option<Either<CourseFailure, Unit>> removeStudentOption}) {
     return _CourseState(
       courses: courses,
+      updatedCourseName: updatedCourseName,
       getCoursesOption: getCoursesOption,
       createCourseOption: createCourseOption,
       deleteCourseOption: deleteCourseOption,
@@ -989,6 +1290,7 @@ const $CourseState = _$CourseStateTearOff();
 /// @nodoc
 mixin _$CourseState {
   List<CourseModel> get courses => throw _privateConstructorUsedError;
+  String? get updatedCourseName => throw _privateConstructorUsedError;
   Option<Either<CourseFailure, List<CourseModel>>> get getCoursesOption =>
       throw _privateConstructorUsedError;
   Option<Either<CourseFailure, Unit>> get createCourseOption =>
@@ -1014,6 +1316,7 @@ abstract class $CourseStateCopyWith<$Res> {
       _$CourseStateCopyWithImpl<$Res>;
   $Res call(
       {List<CourseModel> courses,
+      String? updatedCourseName,
       Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption,
       Option<Either<CourseFailure, Unit>> createCourseOption,
       Option<Either<CourseFailure, Unit>> deleteCourseOption,
@@ -1033,6 +1336,7 @@ class _$CourseStateCopyWithImpl<$Res> implements $CourseStateCopyWith<$Res> {
   @override
   $Res call({
     Object? courses = freezed,
+    Object? updatedCourseName = freezed,
     Object? getCoursesOption = freezed,
     Object? createCourseOption = freezed,
     Object? deleteCourseOption = freezed,
@@ -1045,6 +1349,10 @@ class _$CourseStateCopyWithImpl<$Res> implements $CourseStateCopyWith<$Res> {
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
               as List<CourseModel>,
+      updatedCourseName: updatedCourseName == freezed
+          ? _value.updatedCourseName
+          : updatedCourseName // ignore: cast_nullable_to_non_nullable
+              as String?,
       getCoursesOption: getCoursesOption == freezed
           ? _value.getCoursesOption
           : getCoursesOption // ignore: cast_nullable_to_non_nullable
@@ -1082,6 +1390,7 @@ abstract class _$CourseStateCopyWith<$Res>
   @override
   $Res call(
       {List<CourseModel> courses,
+      String? updatedCourseName,
       Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption,
       Option<Either<CourseFailure, Unit>> createCourseOption,
       Option<Either<CourseFailure, Unit>> deleteCourseOption,
@@ -1103,6 +1412,7 @@ class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? courses = freezed,
+    Object? updatedCourseName = freezed,
     Object? getCoursesOption = freezed,
     Object? createCourseOption = freezed,
     Object? deleteCourseOption = freezed,
@@ -1115,6 +1425,10 @@ class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
               as List<CourseModel>,
+      updatedCourseName: updatedCourseName == freezed
+          ? _value.updatedCourseName
+          : updatedCourseName // ignore: cast_nullable_to_non_nullable
+              as String?,
       getCoursesOption: getCoursesOption == freezed
           ? _value.getCoursesOption
           : getCoursesOption // ignore: cast_nullable_to_non_nullable
@@ -1148,6 +1462,7 @@ class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
 class _$_CourseState implements _CourseState {
   const _$_CourseState(
       {required this.courses,
+      required this.updatedCourseName,
       required this.getCoursesOption,
       required this.createCourseOption,
       required this.deleteCourseOption,
@@ -1157,6 +1472,8 @@ class _$_CourseState implements _CourseState {
 
   @override
   final List<CourseModel> courses;
+  @override
+  final String? updatedCourseName;
   @override
   final Option<Either<CourseFailure, List<CourseModel>>> getCoursesOption;
   @override
@@ -1172,7 +1489,7 @@ class _$_CourseState implements _CourseState {
 
   @override
   String toString() {
-    return 'CourseState(courses: $courses, getCoursesOption: $getCoursesOption, createCourseOption: $createCourseOption, deleteCourseOption: $deleteCourseOption, updateCourseOption: $updateCourseOption, sendInvitationOption: $sendInvitationOption, removeStudentOption: $removeStudentOption)';
+    return 'CourseState(courses: $courses, updatedCourseName: $updatedCourseName, getCoursesOption: $getCoursesOption, createCourseOption: $createCourseOption, deleteCourseOption: $deleteCourseOption, updateCourseOption: $updateCourseOption, sendInvitationOption: $sendInvitationOption, removeStudentOption: $removeStudentOption)';
   }
 
   @override
@@ -1182,6 +1499,9 @@ class _$_CourseState implements _CourseState {
             (identical(other.courses, courses) ||
                 const DeepCollectionEquality()
                     .equals(other.courses, courses)) &&
+            (identical(other.updatedCourseName, updatedCourseName) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedCourseName, updatedCourseName)) &&
             (identical(other.getCoursesOption, getCoursesOption) ||
                 const DeepCollectionEquality()
                     .equals(other.getCoursesOption, getCoursesOption)) &&
@@ -1206,6 +1526,7 @@ class _$_CourseState implements _CourseState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(courses) ^
+      const DeepCollectionEquality().hash(updatedCourseName) ^
       const DeepCollectionEquality().hash(getCoursesOption) ^
       const DeepCollectionEquality().hash(createCourseOption) ^
       const DeepCollectionEquality().hash(deleteCourseOption) ^
@@ -1222,6 +1543,7 @@ class _$_CourseState implements _CourseState {
 abstract class _CourseState implements CourseState {
   const factory _CourseState(
           {required List<CourseModel> courses,
+          required String? updatedCourseName,
           required Option<Either<CourseFailure, List<CourseModel>>>
               getCoursesOption,
           required Option<Either<CourseFailure, Unit>> createCourseOption,
@@ -1233,6 +1555,8 @@ abstract class _CourseState implements CourseState {
 
   @override
   List<CourseModel> get courses => throw _privateConstructorUsedError;
+  @override
+  String? get updatedCourseName => throw _privateConstructorUsedError;
   @override
   Option<Either<CourseFailure, List<CourseModel>>> get getCoursesOption =>
       throw _privateConstructorUsedError;

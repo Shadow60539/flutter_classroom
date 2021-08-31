@@ -6,5 +6,3 @@ import 'package:hive/hive.dart';
 final bool isUserLoggedIn = getIt<Box>().get(HiveBoxNames.user) != null
     ? (getIt<Box>().get(HiveBoxNames.user) as UserModel).roleId != null
     : false;
-final bool isUserStudent =
-    (getIt<Box>().get(HiveBoxNames.user) as UserModel).roleId == 0;

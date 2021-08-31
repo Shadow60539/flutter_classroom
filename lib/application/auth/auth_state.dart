@@ -8,8 +8,8 @@ class AuthState with _$AuthState {
     required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
     required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
     required Option<Either<AuthFailure, Unit>> registerRoleOption,
-    // required Option<Either<ValidationFailure, String>> emailValidationOption,
-    // required Option<Either<ValidationFailure, String>> passwordValidationOption,
+    required Option<Either<AuthFailure, Unit>> switchRoleOption,
+    required Option<Either<AuthFailure, Unit>> signOutOption,
   }) = _AuthState;
 
   factory AuthState.initial() => AuthState(
@@ -18,7 +18,7 @@ class AuthState with _$AuthState {
         signInUsingUsernameOption: none(),
         signInUsingGoogleOption: none(),
         registerRoleOption: none(),
-        // emailValidationOption: none(),
-        // passwordValidationOption: none(),
+        signOutOption: none(),
+        switchRoleOption: none(),
       );
 }

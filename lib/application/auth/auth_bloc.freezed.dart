@@ -44,6 +44,14 @@ class _$AuthEventTearOff {
       roleId,
     );
   }
+
+  _SwitchRole switchRole() {
+    return const _SwitchRole();
+  }
+
+  _SignOut signOut() {
+    return const _SignOut();
+  }
 }
 
 /// @nodoc
@@ -59,6 +67,8 @@ mixin _$AuthEvent {
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
     required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +78,8 @@ mixin _$AuthEvent {
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
     TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +89,8 @@ mixin _$AuthEvent {
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
     required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +99,8 @@ mixin _$AuthEvent {
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
     TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,6 +217,8 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
     required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
   }) {
     return signUpUsingUsername(email, userName, password);
   }
@@ -213,6 +231,8 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
     TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signUpUsingUsername != null) {
@@ -228,6 +248,8 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
     required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return signUpUsingUsername(this);
   }
@@ -239,6 +261,8 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
     TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (signUpUsingUsername != null) {
@@ -348,6 +372,8 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
     required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
   }) {
     return signInUsingUsername(userName, password);
   }
@@ -360,6 +386,8 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
     TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signInUsingUsername != null) {
@@ -375,6 +403,8 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
     required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return signInUsingUsername(this);
   }
@@ -386,6 +416,8 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
     TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (signInUsingUsername != null) {
@@ -453,6 +485,8 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
     required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
   }) {
     return signInUsingGoogle();
   }
@@ -465,6 +499,8 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
     TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signInUsingGoogle != null) {
@@ -480,6 +516,8 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
     required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return signInUsingGoogle(this);
   }
@@ -491,6 +529,8 @@ class _$_SignInUsingGoogle implements _SignInUsingGoogle {
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
     TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (signInUsingGoogle != null) {
@@ -575,6 +615,8 @@ class _$_RegisterUserRole implements _RegisterUserRole {
         signInUsingUsername,
     required TResult Function() signInUsingGoogle,
     required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
   }) {
     return registerRole(roleId);
   }
@@ -587,6 +629,8 @@ class _$_RegisterUserRole implements _RegisterUserRole {
     TResult Function(String userName, String password)? signInUsingUsername,
     TResult Function()? signInUsingGoogle,
     TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (registerRole != null) {
@@ -602,6 +646,8 @@ class _$_RegisterUserRole implements _RegisterUserRole {
     required TResult Function(_SignInUsingUsername value) signInUsingUsername,
     required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
     required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return registerRole(this);
   }
@@ -613,6 +659,8 @@ class _$_RegisterUserRole implements _RegisterUserRole {
     TResult Function(_SignInUsingUsername value)? signInUsingUsername,
     TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
     TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (registerRole != null) {
@@ -632,6 +680,212 @@ abstract class _RegisterUserRole implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$SwitchRoleCopyWith<$Res> {
+  factory _$SwitchRoleCopyWith(
+          _SwitchRole value, $Res Function(_SwitchRole) then) =
+      __$SwitchRoleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SwitchRoleCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$SwitchRoleCopyWith<$Res> {
+  __$SwitchRoleCopyWithImpl(
+      _SwitchRole _value, $Res Function(_SwitchRole) _then)
+      : super(_value, (v) => _then(v as _SwitchRole));
+
+  @override
+  _SwitchRole get _value => super._value as _SwitchRole;
+}
+
+/// @nodoc
+
+class _$_SwitchRole implements _SwitchRole {
+  const _$_SwitchRole();
+
+  @override
+  String toString() {
+    return 'AuthEvent.switchRole()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SwitchRole);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String userName, String password)
+        signUpUsingUsername,
+    required TResult Function(String userName, String password)
+        signInUsingUsername,
+    required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
+  }) {
+    return switchRole();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String userName, String password)?
+        signUpUsingUsername,
+    TResult Function(String userName, String password)? signInUsingUsername,
+    TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
+    required TResult orElse(),
+  }) {
+    if (switchRole != null) {
+      return switchRole();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
+    required TResult Function(_SignInUsingUsername value) signInUsingUsername,
+    required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
+  }) {
+    return switchRole(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
+    TResult Function(_SignInUsingUsername value)? signInUsingUsername,
+    TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (switchRole != null) {
+      return switchRole(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SwitchRole implements AuthEvent {
+  const factory _SwitchRole() = _$_SwitchRole;
+}
+
+/// @nodoc
+abstract class _$SignOutCopyWith<$Res> {
+  factory _$SignOutCopyWith(_SignOut value, $Res Function(_SignOut) then) =
+      __$SignOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$SignOutCopyWith<$Res> {
+  __$SignOutCopyWithImpl(_SignOut _value, $Res Function(_SignOut) _then)
+      : super(_value, (v) => _then(v as _SignOut));
+
+  @override
+  _SignOut get _value => super._value as _SignOut;
+}
+
+/// @nodoc
+
+class _$_SignOut implements _SignOut {
+  const _$_SignOut();
+
+  @override
+  String toString() {
+    return 'AuthEvent.signOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SignOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String userName, String password)
+        signUpUsingUsername,
+    required TResult Function(String userName, String password)
+        signInUsingUsername,
+    required TResult Function() signInUsingGoogle,
+    required TResult Function(int roleId) registerRole,
+    required TResult Function() switchRole,
+    required TResult Function() signOut,
+  }) {
+    return signOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String userName, String password)?
+        signUpUsingUsername,
+    TResult Function(String userName, String password)? signInUsingUsername,
+    TResult Function()? signInUsingGoogle,
+    TResult Function(int roleId)? registerRole,
+    TResult Function()? switchRole,
+    TResult Function()? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignUpUsingUsername value) signUpUsingUsername,
+    required TResult Function(_SignInUsingUsername value) signInUsingUsername,
+    required TResult Function(_SignInUsingGoogle value) signInUsingGoogle,
+    required TResult Function(_RegisterUserRole value) registerRole,
+    required TResult Function(_SwitchRole value) switchRole,
+    required TResult Function(_SignOut value) signOut,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignUpUsingUsername value)? signUpUsingUsername,
+    TResult Function(_SignInUsingUsername value)? signInUsingUsername,
+    TResult Function(_SignInUsingGoogle value)? signInUsingGoogle,
+    TResult Function(_RegisterUserRole value)? registerRole,
+    TResult Function(_SwitchRole value)? switchRole,
+    TResult Function(_SignOut value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignOut implements AuthEvent {
+  const factory _SignOut() = _$_SignOut;
+}
+
+/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
@@ -640,13 +894,17 @@ class _$AuthStateTearOff {
       required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
       required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
-      required Option<Either<AuthFailure, Unit>> registerRoleOption}) {
+      required Option<Either<AuthFailure, Unit>> registerRoleOption,
+      required Option<Either<AuthFailure, Unit>> switchRoleOption,
+      required Option<Either<AuthFailure, Unit>> signOutOption}) {
     return _AuthState(
       user: user,
       signUpUsingUsernameOption: signUpUsingUsernameOption,
       signInUsingUsernameOption: signInUsingUsernameOption,
       signInUsingGoogleOption: signInUsingGoogleOption,
       registerRoleOption: registerRoleOption,
+      switchRoleOption: switchRoleOption,
+      signOutOption: signOutOption,
     );
   }
 }
@@ -665,6 +923,10 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get registerRoleOption =>
       throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get switchRoleOption =>
+      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get signOutOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -680,7 +942,9 @@ abstract class $AuthStateCopyWith<$Res> {
       Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
-      Option<Either<AuthFailure, Unit>> registerRoleOption});
+      Option<Either<AuthFailure, Unit>> registerRoleOption,
+      Option<Either<AuthFailure, Unit>> switchRoleOption,
+      Option<Either<AuthFailure, Unit>> signOutOption});
 }
 
 /// @nodoc
@@ -698,6 +962,8 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
     Object? signInUsingUsernameOption = freezed,
     Object? signInUsingGoogleOption = freezed,
     Object? registerRoleOption = freezed,
+    Object? switchRoleOption = freezed,
+    Object? signOutOption = freezed,
   }) {
     return _then(_value.copyWith(
       user: user == freezed
@@ -720,6 +986,14 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
           ? _value.registerRoleOption
           : registerRoleOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      switchRoleOption: switchRoleOption == freezed
+          ? _value.switchRoleOption
+          : switchRoleOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
+      signOutOption: signOutOption == freezed
+          ? _value.signOutOption
+          : signOutOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -735,7 +1009,9 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
       Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
-      Option<Either<AuthFailure, Unit>> registerRoleOption});
+      Option<Either<AuthFailure, Unit>> registerRoleOption,
+      Option<Either<AuthFailure, Unit>> switchRoleOption,
+      Option<Either<AuthFailure, Unit>> signOutOption});
 }
 
 /// @nodoc
@@ -754,6 +1030,8 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? signInUsingUsernameOption = freezed,
     Object? signInUsingGoogleOption = freezed,
     Object? registerRoleOption = freezed,
+    Object? switchRoleOption = freezed,
+    Object? signOutOption = freezed,
   }) {
     return _then(_AuthState(
       user: user == freezed
@@ -776,6 +1054,14 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.registerRoleOption
           : registerRoleOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      switchRoleOption: switchRoleOption == freezed
+          ? _value.switchRoleOption
+          : switchRoleOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
+      signOutOption: signOutOption == freezed
+          ? _value.signOutOption
+          : signOutOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -788,7 +1074,9 @@ class _$_AuthState implements _AuthState {
       required this.signUpUsingUsernameOption,
       required this.signInUsingUsernameOption,
       required this.signInUsingGoogleOption,
-      required this.registerRoleOption});
+      required this.registerRoleOption,
+      required this.switchRoleOption,
+      required this.signOutOption});
 
   @override
   final UserModel? user;
@@ -800,10 +1088,14 @@ class _$_AuthState implements _AuthState {
   final Option<Either<AuthFailure, Unit>> signInUsingGoogleOption;
   @override
   final Option<Either<AuthFailure, Unit>> registerRoleOption;
+  @override
+  final Option<Either<AuthFailure, Unit>> switchRoleOption;
+  @override
+  final Option<Either<AuthFailure, Unit>> signOutOption;
 
   @override
   String toString() {
-    return 'AuthState(user: $user, signUpUsingUsernameOption: $signUpUsingUsernameOption, signInUsingUsernameOption: $signInUsingUsernameOption, signInUsingGoogleOption: $signInUsingGoogleOption, registerRoleOption: $registerRoleOption)';
+    return 'AuthState(user: $user, signUpUsingUsernameOption: $signUpUsingUsernameOption, signInUsingUsernameOption: $signInUsingUsernameOption, signInUsingGoogleOption: $signInUsingGoogleOption, registerRoleOption: $registerRoleOption, switchRoleOption: $switchRoleOption, signOutOption: $signOutOption)';
   }
 
   @override
@@ -828,7 +1120,13 @@ class _$_AuthState implements _AuthState {
                     other.signInUsingGoogleOption, signInUsingGoogleOption)) &&
             (identical(other.registerRoleOption, registerRoleOption) ||
                 const DeepCollectionEquality()
-                    .equals(other.registerRoleOption, registerRoleOption)));
+                    .equals(other.registerRoleOption, registerRoleOption)) &&
+            (identical(other.switchRoleOption, switchRoleOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.switchRoleOption, switchRoleOption)) &&
+            (identical(other.signOutOption, signOutOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.signOutOption, signOutOption)));
   }
 
   @override
@@ -838,7 +1136,9 @@ class _$_AuthState implements _AuthState {
       const DeepCollectionEquality().hash(signUpUsingUsernameOption) ^
       const DeepCollectionEquality().hash(signInUsingUsernameOption) ^
       const DeepCollectionEquality().hash(signInUsingGoogleOption) ^
-      const DeepCollectionEquality().hash(registerRoleOption);
+      const DeepCollectionEquality().hash(registerRoleOption) ^
+      const DeepCollectionEquality().hash(switchRoleOption) ^
+      const DeepCollectionEquality().hash(signOutOption);
 
   @JsonKey(ignore: true)
   @override
@@ -848,12 +1148,13 @@ class _$_AuthState implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-          {required UserModel? user,
-          required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
-          required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
-          required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
-          required Option<Either<AuthFailure, Unit>> registerRoleOption}) =
-      _$_AuthState;
+      {required UserModel? user,
+      required Option<Either<AuthFailure, Unit>> signUpUsingUsernameOption,
+      required Option<Either<AuthFailure, Unit>> signInUsingUsernameOption,
+      required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
+      required Option<Either<AuthFailure, Unit>> registerRoleOption,
+      required Option<Either<AuthFailure, Unit>> switchRoleOption,
+      required Option<Either<AuthFailure, Unit>> signOutOption}) = _$_AuthState;
 
   @override
   UserModel? get user => throw _privateConstructorUsedError;
@@ -868,6 +1169,12 @@ abstract class _AuthState implements AuthState {
       throw _privateConstructorUsedError;
   @override
   Option<Either<AuthFailure, Unit>> get registerRoleOption =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Either<AuthFailure, Unit>> get switchRoleOption =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Either<AuthFailure, Unit>> get signOutOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

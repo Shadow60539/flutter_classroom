@@ -192,16 +192,7 @@ class CourseRepo extends ICoursesRepo {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [
-          ClassroomApi.classroomCoursesReadonlyScope,
-          ClassroomApi.classroomCourseworkMeReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsScope,
-          ClassroomApi.classroomCourseworkmaterialsScope,
-          ClassroomApi.classroomCourseworkMeScope,
           ClassroomApi.classroomCoursesScope,
-          ClassroomApi.classroomProfileEmailsScope,
-          ClassroomApi.classroomProfilePhotosScope,
-          ClassroomApi.classroomRostersScope,
         ],
       ).signIn();
 
@@ -222,15 +213,6 @@ class CourseRepo extends ICoursesRepo {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [
-          ClassroomApi.classroomCoursesReadonlyScope,
-          ClassroomApi.classroomCourseworkMeReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsScope,
-          ClassroomApi.classroomCourseworkmaterialsScope,
-          ClassroomApi.classroomCourseworkMeScope,
-          ClassroomApi.classroomCoursesScope,
-          ClassroomApi.classroomProfileEmailsScope,
-          ClassroomApi.classroomProfilePhotosScope,
           ClassroomApi.classroomRostersScope,
         ],
       ).signIn();

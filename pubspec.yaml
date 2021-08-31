@@ -28,6 +28,7 @@ dependencies:
   contained_tab_bar_view:
     git: https://github.com/slovnicki/contained_tab_bar_view
   cupertino_icons: ^1.0.2
+  custom_pop_up_menu: ^1.2.2
   dartz: ^0.10.0-nullsafety.2
   fancy_text_reveal: ^1.0.1
   firebase_auth: ^3.1.0
@@ -35,7 +36,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^7.2.0
+  flutter_phoenix: ^1.0.0
   flutter_screenutil: ^5.0.0+2
+  flutter_speed_dial: ^4.3.0
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.8
   get_it: ^7.2.0

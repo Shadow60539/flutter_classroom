@@ -19,4 +19,7 @@ class CourseEvent with _$CourseEvent {
     required String courseId,
     required String studentEmail,
   }) = _RemoveStudentFromCourse;
+  const factory CourseEvent.removedUpdatedCourseName() =
+      _RemoveUpdatedCourseName;
+  const factory CourseEvent.reset() = _Reset;
 }

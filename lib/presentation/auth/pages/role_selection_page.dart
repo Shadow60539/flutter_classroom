@@ -84,16 +84,12 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FadeFromUpAnimation(
-                          child: Flexible(
-                            child: Text(
-                              email,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  // fontWeight: FontWeight.w600,
-                                  fontSize: 20),
-                            ),
-                          ),
+                        Text(
+                          email,
+                          style: TextStyle(
+                              color: Colors.white,
+                              // fontWeight: FontWeight.w600,
+                              fontSize: 20),
                         ),
                         const SizedBox(height: 20),
                       ],
@@ -102,16 +98,12 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FadeFromUpAnimation(
-                          child: Flexible(
-                            child: Text(
-                              "Select a role to continue",
-                              style: TextStyle(
-                                color: Colors.white24,
-                                // fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                              ),
-                            ),
+                        Text(
+                          "Select a role to continue",
+                          style: TextStyle(
+                            color: Colors.white24,
+                            // fontWeight: FontWeight.w600,
+                            fontSize: 14,
                           ),
                         ),
                         const SizedBox(height: 20),

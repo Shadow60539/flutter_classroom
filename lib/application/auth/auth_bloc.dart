@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:classroom/application/course/course_bloc.dart';
 import 'package:classroom/core/utils/custom_build_context.dart';
 import 'package:classroom/domain/auth/auth_failures.dart';
 import 'package:classroom/domain/auth/i_auth_repository.dart';
@@ -24,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   static void addEventWithoutContext(AuthEvent e) =>
       BlocProvider.of<AuthBloc>(context).add(e);
+
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
@@ -90,6 +92,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             registerRoleOption: const Some(Right(unit)),
             user: state.user?.copyWith(roleId: e.roleId),
           ),
+        );
+      },
+      switchRole: (_) async* {
+        yield state.copyWith(switchRoleOption: none());
+        final failureOrSuccess = await authRepo.switchRole();
+
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(switchRoleOption: Some(Left(l))),
+          (r) {
+            // Phoenix.rebirth(context);
+            return state.copyWith(
+              switchRoleOption: const Some(Right(unit)),
+            );
+          },
+        );
+      },
+      signOut: (_) async* {
+        yield state.copyWith(signOutOption: none());
+        final failureOrSuccess = await authRepo.signOut();
+
+        yield failureOrSuccess.fold(
+          (l) => state.copyWith(signOutOption: Some(Left(l))),
+          (r) {
+            CourseBloc.addEventWithoutContext(const CourseEvent.reset());
+            return AuthState.initial();
+          },
         );
       },
     );

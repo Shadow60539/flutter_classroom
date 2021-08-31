@@ -196,4 +196,33 @@ class AuthRepo extends IAuthRepo {
       return const Left(AuthFailure.clientAuthFailure());
     }
   }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      await box.clear();
+      await firebaseAuth.signOut();
+      await googleSignIn.signOut();
+      return const Right(unit);
+    } catch (e) {
+      return const Left(AuthFailure.clientAuthFailure());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> switchRole() async {
+    try {
+      final userModel = box.get(HiveBoxNames.user) as UserModel;
+
+      if (userModel.roleId == 0) {
+        await box.put(HiveBoxNames.user, userModel.copyWith(roleId: 1));
+      } else {
+        await box.put(HiveBoxNames.user, userModel.copyWith(roleId: 0));
+      }
+
+      return const Right(unit);
+    } catch (e) {
+      return const Left(AuthFailure.clientAuthFailure());
+    }
+  }
 }
