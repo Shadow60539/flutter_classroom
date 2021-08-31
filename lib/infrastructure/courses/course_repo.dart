@@ -23,17 +23,10 @@ class CourseRepo extends ICoursesRepo {
 
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
       scopes: [
-        ClassroomApi.classroomCoursesReadonlyScope,
-        ClassroomApi.classroomCourseworkMeReadonlyScope,
-        ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-        ClassroomApi.classroomCourseworkStudentsScope,
-        ClassroomApi.classroomCourseworkmaterialsScope,
-        ClassroomApi.classroomCourseworkMeScope,
         ClassroomApi.classroomCoursesScope,
+        ClassroomApi.classroomCoursesReadonlyScope,
         ClassroomApi.classroomRostersScope,
         ClassroomApi.classroomRostersReadonlyScope,
-        ClassroomApi.classroomProfileEmailsScope,
-        ClassroomApi.classroomProfilePhotosScope,
       ],
     ).signIn();
 
@@ -87,15 +80,7 @@ class CourseRepo extends ICoursesRepo {
   Future<Either<CourseFailure, CourseModel>> createCourse(String name) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
-        scopes: [
-          ClassroomApi.classroomCoursesReadonlyScope,
-          ClassroomApi.classroomCourseworkMeReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsScope,
-          ClassroomApi.classroomCourseworkmaterialsScope,
-          ClassroomApi.classroomCourseworkMeScope,
-          ClassroomApi.classroomCoursesScope
-        ],
+        scopes: [ClassroomApi.classroomCoursesScope],
       ).signIn();
 
       final GoogleAPIClient httpClient =
@@ -146,15 +131,6 @@ class CourseRepo extends ICoursesRepo {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [
-          ClassroomApi.classroomCoursesReadonlyScope,
-          ClassroomApi.classroomCourseworkMeReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsScope,
-          ClassroomApi.classroomCourseworkmaterialsScope,
-          ClassroomApi.classroomCourseworkMeScope,
-          ClassroomApi.classroomCoursesScope,
-          ClassroomApi.classroomProfileEmailsScope,
-          ClassroomApi.classroomProfilePhotosScope,
           ClassroomApi.classroomRostersScope,
         ],
       ).signIn();
@@ -236,16 +212,7 @@ class CourseRepo extends ICoursesRepo {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [
-          ClassroomApi.classroomCoursesReadonlyScope,
-          ClassroomApi.classroomCourseworkMeReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsReadonlyScope,
-          ClassroomApi.classroomCourseworkStudentsScope,
-          ClassroomApi.classroomCourseworkmaterialsScope,
-          ClassroomApi.classroomCourseworkMeScope,
           ClassroomApi.classroomCoursesScope,
-          ClassroomApi.classroomProfileEmailsScope,
-          ClassroomApi.classroomProfilePhotosScope,
-          ClassroomApi.classroomRostersScope,
         ],
       ).signIn();
 
