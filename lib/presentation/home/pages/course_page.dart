@@ -135,6 +135,12 @@ class _CoursePageState extends State<CoursePage> {
                     final String? updatedCourseName = state.updatedCourseName;
                     final String courseName =
                         updatedCourseName ?? widget.course.name;
+                    final String teacherEmail =
+                        widget.course.teachers?.first.profile?.emailAddress ??
+                            "teacher@gmail.com";
+                    final String myEmail =
+                        (getIt<Box>().get(HiveBoxNames.user) as UserModel)
+                            .email;
                     return Column(
                       children: [
                         Container(
@@ -218,24 +224,26 @@ class _CoursePageState extends State<CoursePage> {
                                       child: const UserAvatar(),
                                     ),
                                     title: Text(
-                                      student.profile!.emailAddress!,
+                                      student.profile?.emailAddress ??
+                                          "student@gmail.com",
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.white60,
                                       ),
                                     ),
-                                    trailing: isUserStudent
+                                    trailing: isUserStudent ||
+                                            myEmail != teacherEmail
                                         ? null
                                         : PopupMenuButton(
                                             onSelected: (value) {
                                               CourseBloc.addEventWithoutContext(
-                                                  CourseEvent
-                                                      .removeStudentFromCourse(
-                                                          courseId:
-                                                              student.courseId!,
-                                                          studentEmail: student
-                                                              .profile!
-                                                              .emailAddress!));
+                                                  CourseEvent.removeStudentFromCourse(
+                                                      courseId:
+                                                          student.courseId!,
+                                                      studentEmail: student
+                                                              .profile
+                                                              ?.emailAddress ??
+                                                          "student@gmail.com"));
                                             },
                                             child: Icon(
                                               Icons.more_vert_outlined,
