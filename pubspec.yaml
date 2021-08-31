@@ -49,6 +49,7 @@ dependencies:
   hive_generator: ^1.1.0
   injectable: any
   lint: any
+  lottie: ^1.1.0
   path_provider: ^2.0.2
 
 dev_dependencies:
@@ -69,6 +70,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/core/
     - assets/auth/
     - assets/courses/
     # An image asset can refer to one or more resolution-specific "variants", see

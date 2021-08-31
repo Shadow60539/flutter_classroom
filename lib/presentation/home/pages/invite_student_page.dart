@@ -96,6 +96,22 @@ class _InviteStudentPageState extends State<InviteStudentPage>
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              leading: IconButton(
+                  splashColor: Colors.transparent,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Icon(
+                      Icons.keyboard_backspace_outlined,
+                      color: Colors.white30,
+                    ),
+                  )),
+            ),
             backgroundColor: Colors.black,
             body: SingleChildScrollView(
               padding: const EdgeInsets.all(40.0),
@@ -137,7 +153,7 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                           prefixIcon: Padding(
                             padding: const EdgeInsets.only(bottom: 3),
                             child: Icon(
-                              Icons.vpn_key_outlined,
+                              Icons.title,
                               size: 18,
                               color: Colors.black12,
                             ),

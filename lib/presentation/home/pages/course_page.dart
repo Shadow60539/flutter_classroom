@@ -3,6 +3,7 @@ import 'package:classroom/application/course/course_bloc.dart';
 import 'package:classroom/core/strings.dart';
 import 'package:classroom/domain/auth/user_model.dart';
 import 'package:classroom/domain/courses/course_model.dart';
+import 'package:classroom/presentation/home/widgets/user_avatar.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -185,8 +186,8 @@ class _CoursePageState extends State<CoursePage> {
                         Expanded(
                           child: ContainedTabBarView(
                             tabBarProperties: TabBarProperties(
-                              indicatorColor: widget.primaryColor,
-                            ),
+                                indicatorColor: widget.primaryColor,
+                                indicatorSize: TabBarIndicatorSize.label),
                             tabs: [
                               Text(
                                 "Students",
@@ -204,93 +205,80 @@ class _CoursePageState extends State<CoursePage> {
                               ),
                             ],
                             views: [
-                              RefreshIndicator(
-                                onRefresh: () async {
-                                  CourseBloc.addEventWithoutContext(
-                                      const CourseEvent.getCourses());
-                                  await Future.delayed(
-                                      const Duration(seconds: 4));
-                                },
-                                child: ListView.builder(
-                                  itemCount: widget.course.students!.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    final Student student =
-                                        widget.course.students![index];
-                                    return ListTile(
-                                      leading: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.person,
-                                          color: Colors.white60,
-                                        ),
+                              ListView.builder(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                itemCount: widget.course.students!.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final Student student =
+                                      widget.course.students![index];
+                                  return ListTile(
+                                    leading: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const UserAvatar(),
+                                    ),
+                                    title: Text(
+                                      student.profile!.emailAddress!,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white60,
                                       ),
-                                      title: Text(
-                                        student.profile!.emailAddress!,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.white60,
-                                        ),
-                                      ),
-                                      trailing: isUserStudent
-                                          ? null
-                                          : PopupMenuButton(
-                                              onSelected: (value) {
-                                                CourseBloc.addEventWithoutContext(
-                                                    CourseEvent
-                                                        .removeStudentFromCourse(
-                                                            courseId: student
-                                                                .courseId!,
-                                                            studentEmail: student
-                                                                .profile!
-                                                                .emailAddress!));
-                                              },
-                                              child: Icon(
-                                                Icons.more_vert_outlined,
-                                                color: Colors.white30,
-                                              ),
-                                              itemBuilder: (context) {
-                                                return [
-                                                  PopupMenuItem(
-                                                      height: 20,
-                                                      value: "Remove",
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons
-                                                                .delete_outline,
-                                                            // color: Colors.black38,
-                                                            size: 14,
-                                                          ),
-                                                          const SizedBox(
-                                                              width: 5),
-                                                          Text(
-                                                            "Remove Student",
-                                                            style: TextStyle(
-                                                                fontSize: 12),
-                                                          ),
-                                                        ],
-                                                      ))
-                                                ];
-                                              },
+                                    ),
+                                    trailing: isUserStudent
+                                        ? null
+                                        : PopupMenuButton(
+                                            onSelected: (value) {
+                                              CourseBloc.addEventWithoutContext(
+                                                  CourseEvent
+                                                      .removeStudentFromCourse(
+                                                          courseId:
+                                                              student.courseId!,
+                                                          studentEmail: student
+                                                              .profile!
+                                                              .emailAddress!));
+                                            },
+                                            child: Icon(
+                                              Icons.more_vert_outlined,
+                                              color: Colors.white30,
                                             ),
-                                    );
-                                  },
-                                ),
+                                            itemBuilder: (context) {
+                                              return [
+                                                PopupMenuItem(
+                                                    height: 20,
+                                                    value: "Remove",
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.delete_outline,
+                                                          // color: Colors.black38,
+                                                          size: 14,
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 5),
+                                                        Text(
+                                                          "Remove Student",
+                                                          style: TextStyle(
+                                                              fontSize: 12),
+                                                        ),
+                                                      ],
+                                                    ))
+                                              ];
+                                            },
+                                          ),
+                                  );
+                                },
                               ),
                               ListView.builder(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
                                 itemCount: widget.course.teachers!.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   final Teacher teacher =
                                       widget.course.teachers![index];
                                   return ListTile(
                                     leading: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Colors.white60,
-                                      ),
-                                    ),
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: const UserAvatar()),
                                     title: Text(
                                       teacher.profile!.emailAddress ??
                                           "teacher@gmail.com",

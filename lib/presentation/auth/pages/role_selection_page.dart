@@ -3,7 +3,7 @@ import 'package:classroom/core/strings.dart';
 import 'package:classroom/domain/auth/user_model.dart';
 import 'package:classroom/injection.dart';
 import 'package:classroom/presentation/core/fade_animations.dart';
-import 'package:classroom/presentation/home/pages/home_page.dart';
+import 'package:classroom/presentation/home/pages/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +50,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
               (r) async {
                 await Future.delayed(const Duration(milliseconds: 400));
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const HomePage()));
+                    MaterialPageRoute(builder: (_) => const LoadingPage()));
               },
             ),
           );
