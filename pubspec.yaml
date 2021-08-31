@@ -53,12 +53,23 @@ dependencies:
   path_provider: ^2.0.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.2
   build_runner: any
   built_value_generator: any
   flutter_test:
     sdk: flutter
   freezed: any
   injectable_generator: any
+  flutter_launcher_name:
+    git: https://github.com/joranmulderij/flutter_launcher_name
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+
+flutter_launcher_name:
+  name: "Classroom"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -71,6 +82,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/core/
+    - assets/icon/
     - assets/auth/
     - assets/courses/
     # An image asset can refer to one or more resolution-specific "variants", see
