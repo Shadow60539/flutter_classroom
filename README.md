@@ -20,6 +20,9 @@ Before we start, you can take a look at the app:
 - [x] Join Course.
 - [x] Invite students to Course.
 - [x] Add/Remove students from Course.
+- [ ] Upload/Submit assignments, tests.
+- [ ] Calendar view.
+- [ ] Video Conference (Online Class).
 
 
 ## How To Use 🧾
