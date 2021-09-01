@@ -1,7 +1,7 @@
-
+![Dart](https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white) ![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white)
 ![Cover](images/cover.png)
 
-# Introduction
+# Introduction 🚀
 
 > Classroom is a Google Classroom clone built using 💙 Flutter.
 
@@ -9,7 +9,11 @@ Before we start, you can take a look at the app:
 
 ![Output sample](images/demo.gif)
 
-## Key Features
+## Screenshots 🗻
+
+![Output sample](images/login_page.png)![Output sample](images/sign_up_page.png)![Output sample](images/role_selection_page.png)![Output sample](images/loading_page.png)![Output sample](images/home_page.png)![Output sample](images/course_page.png)![Output sample](images/create_course_page.png)![Output sample](images/course_page_more.png)![Output sample](images/invite_student_page.png)![Output sample](images/home_page_more.png) 
+
+## Key Features 🔑
 
 - [x] Login/SignUp.
 - [x] CRUD Course.
@@ -18,7 +22,7 @@ Before we start, you can take a look at the app:
 - [x] Add/Remove students from Course.
 
 
-## How To Use
+## How To Use 🧾
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Flutter](https://flutter.dev/docs/get-started/install) installed on your computer. From your command line:
 
@@ -37,7 +41,7 @@ $ flutter run
 ```
 
 
-### Packages
+### Packages 📦
 
 
 Some very good packages are used in the project.
@@ -56,7 +60,7 @@ PACKAGE | INFO
 [lint](https://pub.flutter-io.cn/packages/lint) | Rules handler for Dart
 [build_runner](https://pub.flutter-io.cn/packages/build_runner) | Build Custom Models
 
-### Directory Structure
+### Directory Structure 🦴
 
 The project directory structure is as follows:
 
