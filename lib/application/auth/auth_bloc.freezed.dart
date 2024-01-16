@@ -10,7 +10,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',);
 
 /// @nodoc
 class _$AuthEventTearOff {
@@ -19,7 +19,7 @@ class _$AuthEventTearOff {
   _SignUpUsingUsername signUpUsingUsername(
       {required String email,
       required String userName,
-      required String password}) {
+      required String password,}) {
     return _SignUpUsingUsername(
       email: email,
       userName: userName,
@@ -28,7 +28,7 @@ class _$AuthEventTearOff {
   }
 
   _SignInUsingUsername signInUsingUsername(
-      {required String userName, required String password}) {
+      {required String userName, required String password,}) {
     return _SignInUsingUsername(
       userName: userName,
       password: password,
@@ -124,7 +124,7 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 /// @nodoc
 abstract class _$SignUpUsingUsernameCopyWith<$Res> {
   factory _$SignUpUsingUsernameCopyWith(_SignUpUsingUsername value,
-          $Res Function(_SignUpUsingUsername) then) =
+          $Res Function(_SignUpUsingUsername) then,) =
       __$SignUpUsingUsernameCopyWithImpl<$Res>;
   $Res call({String email, String userName, String password});
 }
@@ -134,8 +134,8 @@ class __$SignUpUsingUsernameCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
     implements _$SignUpUsingUsernameCopyWith<$Res> {
   __$SignUpUsingUsernameCopyWithImpl(
-      _SignUpUsingUsername _value, $Res Function(_SignUpUsingUsername) _then)
-      : super(_value, (v) => _then(v as _SignUpUsingUsername));
+      _SignUpUsingUsername value, $Res Function(_SignUpUsingUsername) then,)
+      : super(value, (v) => then(v as _SignUpUsingUsername));
 
   @override
   _SignUpUsingUsername get _value => super._value as _SignUpUsingUsername;
@@ -159,7 +159,7 @@ class __$SignUpUsingUsernameCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -167,7 +167,7 @@ class __$SignUpUsingUsernameCopyWithImpl<$Res>
 
 class _$_SignUpUsingUsername implements _SignUpUsingUsername {
   const _$_SignUpUsingUsername(
-      {required this.email, required this.userName, required this.password});
+      {required this.email, required this.userName, required this.password,});
 
   @override
   final String email;
@@ -206,7 +206,7 @@ class _$_SignUpUsingUsername implements _SignUpUsingUsername {
   @override
   _$SignUpUsingUsernameCopyWith<_SignUpUsingUsername> get copyWith =>
       __$SignUpUsingUsernameCopyWithImpl<_SignUpUsingUsername>(
-          this, _$identity);
+          this, _$identity,);
 
   @override
   @optionalTypeArgs
@@ -276,7 +276,7 @@ abstract class _SignUpUsingUsername implements AuthEvent {
   const factory _SignUpUsingUsername(
       {required String email,
       required String userName,
-      required String password}) = _$_SignUpUsingUsername;
+      required String password,}) = _$_SignUpUsingUsername;
 
   String get email => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
@@ -289,7 +289,7 @@ abstract class _SignUpUsingUsername implements AuthEvent {
 /// @nodoc
 abstract class _$SignInUsingUsernameCopyWith<$Res> {
   factory _$SignInUsingUsernameCopyWith(_SignInUsingUsername value,
-          $Res Function(_SignInUsingUsername) then) =
+          $Res Function(_SignInUsingUsername) then,) =
       __$SignInUsingUsernameCopyWithImpl<$Res>;
   $Res call({String userName, String password});
 }
@@ -299,8 +299,8 @@ class __$SignInUsingUsernameCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
     implements _$SignInUsingUsernameCopyWith<$Res> {
   __$SignInUsingUsernameCopyWithImpl(
-      _SignInUsingUsername _value, $Res Function(_SignInUsingUsername) _then)
-      : super(_value, (v) => _then(v as _SignInUsingUsername));
+      _SignInUsingUsername value, $Res Function(_SignInUsingUsername) then,)
+      : super(value, (v) => then(v as _SignInUsingUsername));
 
   @override
   _SignInUsingUsername get _value => super._value as _SignInUsingUsername;
@@ -319,7 +319,7 @@ class __$SignInUsingUsernameCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -327,7 +327,7 @@ class __$SignInUsingUsernameCopyWithImpl<$Res>
 
 class _$_SignInUsingUsername implements _SignInUsingUsername {
   const _$_SignInUsingUsername(
-      {required this.userName, required this.password});
+      {required this.userName, required this.password,});
 
   @override
   final String userName;
@@ -361,7 +361,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
   @override
   _$SignInUsingUsernameCopyWith<_SignInUsingUsername> get copyWith =>
       __$SignInUsingUsernameCopyWithImpl<_SignInUsingUsername>(
-          this, _$identity);
+          this, _$identity,);
 
   @override
   @optionalTypeArgs
@@ -430,7 +430,7 @@ class _$_SignInUsingUsername implements _SignInUsingUsername {
 abstract class _SignInUsingUsername implements AuthEvent {
   const factory _SignInUsingUsername(
       {required String userName,
-      required String password}) = _$_SignInUsingUsername;
+      required String password,}) = _$_SignInUsingUsername;
 
   String get userName => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
@@ -442,7 +442,7 @@ abstract class _SignInUsingUsername implements AuthEvent {
 /// @nodoc
 abstract class _$SignInUsingGoogleCopyWith<$Res> {
   factory _$SignInUsingGoogleCopyWith(
-          _SignInUsingGoogle value, $Res Function(_SignInUsingGoogle) then) =
+          _SignInUsingGoogle value, $Res Function(_SignInUsingGoogle) then,) =
       __$SignInUsingGoogleCopyWithImpl<$Res>;
 }
 
@@ -451,8 +451,8 @@ class __$SignInUsingGoogleCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
     implements _$SignInUsingGoogleCopyWith<$Res> {
   __$SignInUsingGoogleCopyWithImpl(
-      _SignInUsingGoogle _value, $Res Function(_SignInUsingGoogle) _then)
-      : super(_value, (v) => _then(v as _SignInUsingGoogle));
+      _SignInUsingGoogle value, $Res Function(_SignInUsingGoogle) then,)
+      : super(value, (v) => then(v as _SignInUsingGoogle));
 
   @override
   _SignInUsingGoogle get _value => super._value as _SignInUsingGoogle;
@@ -547,7 +547,7 @@ abstract class _SignInUsingGoogle implements AuthEvent {
 /// @nodoc
 abstract class _$RegisterUserRoleCopyWith<$Res> {
   factory _$RegisterUserRoleCopyWith(
-          _RegisterUserRole value, $Res Function(_RegisterUserRole) then) =
+          _RegisterUserRole value, $Res Function(_RegisterUserRole) then,) =
       __$RegisterUserRoleCopyWithImpl<$Res>;
   $Res call({int roleId});
 }
@@ -557,8 +557,8 @@ class __$RegisterUserRoleCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
     implements _$RegisterUserRoleCopyWith<$Res> {
   __$RegisterUserRoleCopyWithImpl(
-      _RegisterUserRole _value, $Res Function(_RegisterUserRole) _then)
-      : super(_value, (v) => _then(v as _RegisterUserRole));
+      _RegisterUserRole value, $Res Function(_RegisterUserRole) then,)
+      : super(value, (v) => then(v as _RegisterUserRole));
 
   @override
   _RegisterUserRole get _value => super._value as _RegisterUserRole;
@@ -572,7 +572,7 @@ class __$RegisterUserRoleCopyWithImpl<$Res>
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ),);
   }
 }
 
@@ -682,7 +682,7 @@ abstract class _RegisterUserRole implements AuthEvent {
 /// @nodoc
 abstract class _$SwitchRoleCopyWith<$Res> {
   factory _$SwitchRoleCopyWith(
-          _SwitchRole value, $Res Function(_SwitchRole) then) =
+          _SwitchRole value, $Res Function(_SwitchRole) then,) =
       __$SwitchRoleCopyWithImpl<$Res>;
 }
 
@@ -690,8 +690,8 @@ abstract class _$SwitchRoleCopyWith<$Res> {
 class __$SwitchRoleCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
     implements _$SwitchRoleCopyWith<$Res> {
   __$SwitchRoleCopyWithImpl(
-      _SwitchRole _value, $Res Function(_SwitchRole) _then)
-      : super(_value, (v) => _then(v as _SwitchRole));
+      _SwitchRole value, $Res Function(_SwitchRole) then,)
+      : super(value, (v) => then(v as _SwitchRole));
 
   @override
   _SwitchRole get _value => super._value as _SwitchRole;
@@ -792,8 +792,8 @@ abstract class _$SignOutCopyWith<$Res> {
 /// @nodoc
 class __$SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
     implements _$SignOutCopyWith<$Res> {
-  __$SignOutCopyWithImpl(_SignOut _value, $Res Function(_SignOut) _then)
-      : super(_value, (v) => _then(v as _SignOut));
+  __$SignOutCopyWithImpl(_SignOut value, $Res Function(_SignOut) then)
+      : super(value, (v) => then(v as _SignOut));
 
   @override
   _SignOut get _value => super._value as _SignOut;
@@ -896,7 +896,7 @@ class _$AuthStateTearOff {
       required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
       required Option<Either<AuthFailure, Unit>> registerRoleOption,
       required Option<Either<AuthFailure, Unit>> switchRoleOption,
-      required Option<Either<AuthFailure, Unit>> signOutOption}) {
+      required Option<Either<AuthFailure, Unit>> signOutOption,}) {
     return _AuthState(
       user: user,
       signUpUsingUsernameOption: signUpUsingUsernameOption,
@@ -944,7 +944,7 @@ abstract class $AuthStateCopyWith<$Res> {
       Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
       Option<Either<AuthFailure, Unit>> registerRoleOption,
       Option<Either<AuthFailure, Unit>> switchRoleOption,
-      Option<Either<AuthFailure, Unit>> signOutOption});
+      Option<Either<AuthFailure, Unit>> signOutOption,});
 }
 
 /// @nodoc
@@ -994,14 +994,14 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
           ? _value.signOutOption
           : signOutOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
-    ));
+    ),);
   }
 }
 
 /// @nodoc
 abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory _$AuthStateCopyWith(
-          _AuthState value, $Res Function(_AuthState) then) =
+          _AuthState value, $Res Function(_AuthState) then,) =
       __$AuthStateCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -1011,14 +1011,14 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
       Option<Either<AuthFailure, Unit>> registerRoleOption,
       Option<Either<AuthFailure, Unit>> switchRoleOption,
-      Option<Either<AuthFailure, Unit>> signOutOption});
+      Option<Either<AuthFailure, Unit>> signOutOption,});
 }
 
 /// @nodoc
 class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     implements _$AuthStateCopyWith<$Res> {
-  __$AuthStateCopyWithImpl(_AuthState _value, $Res Function(_AuthState) _then)
-      : super(_value, (v) => _then(v as _AuthState));
+  __$AuthStateCopyWithImpl(_AuthState value, $Res Function(_AuthState) then)
+      : super(value, (v) => then(v as _AuthState));
 
   @override
   _AuthState get _value => super._value as _AuthState;
@@ -1062,7 +1062,7 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.signOutOption
           : signOutOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
-    ));
+    ),);
   }
 }
 
@@ -1076,7 +1076,7 @@ class _$_AuthState implements _AuthState {
       required this.signInUsingGoogleOption,
       required this.registerRoleOption,
       required this.switchRoleOption,
-      required this.signOutOption});
+      required this.signOutOption,});
 
   @override
   final UserModel? user;
@@ -1105,19 +1105,19 @@ class _$_AuthState implements _AuthState {
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.signUpUsingUsernameOption,
-                    signUpUsingUsernameOption) ||
+                    signUpUsingUsernameOption,) ||
                 const DeepCollectionEquality().equals(
                     other.signUpUsingUsernameOption,
-                    signUpUsingUsernameOption)) &&
+                    signUpUsingUsernameOption,)) &&
             (identical(other.signInUsingUsernameOption,
-                    signInUsingUsernameOption) ||
+                    signInUsingUsernameOption,) ||
                 const DeepCollectionEquality().equals(
                     other.signInUsingUsernameOption,
-                    signInUsingUsernameOption)) &&
+                    signInUsingUsernameOption,)) &&
             (identical(
-                    other.signInUsingGoogleOption, signInUsingGoogleOption) ||
+                    other.signInUsingGoogleOption, signInUsingGoogleOption,) ||
                 const DeepCollectionEquality().equals(
-                    other.signInUsingGoogleOption, signInUsingGoogleOption)) &&
+                    other.signInUsingGoogleOption, signInUsingGoogleOption,)) &&
             (identical(other.registerRoleOption, registerRoleOption) ||
                 const DeepCollectionEquality()
                     .equals(other.registerRoleOption, registerRoleOption)) &&
@@ -1154,7 +1154,7 @@ abstract class _AuthState implements AuthState {
       required Option<Either<AuthFailure, Unit>> signInUsingGoogleOption,
       required Option<Either<AuthFailure, Unit>> registerRoleOption,
       required Option<Either<AuthFailure, Unit>> switchRoleOption,
-      required Option<Either<AuthFailure, Unit>> signOutOption}) = _$_AuthState;
+      required Option<Either<AuthFailure, Unit>> signOutOption,}) = _$_AuthState;
 
   @override
   UserModel? get user => throw _privateConstructorUsedError;

@@ -5,11 +5,16 @@ const kCurve = Curves.easeOutSine;
 
 class FadeFromUpAnimation extends StatefulWidget {
   final Widget child;
-  final double begin, end;
+  final double begin;
+  final double end;
   final double drop;
 
-  const FadeFromUpAnimation(
-      {required this.child, this.begin = 0.0, this.end = 1.0, this.drop = 0.2});
+  const FadeFromUpAnimation({
+    required this.child,
+    this.begin = 0.0,
+    this.end = 1.0,
+    this.drop = 0.2,
+  });
   @override
   _FadeFromUpAnimationState createState() => _FadeFromUpAnimationState();
 }
@@ -30,8 +35,9 @@ class _FadeFromUpAnimationState extends State<FadeFromUpAnimation>
         Tween<Offset>(begin: Offset(0, widget.drop), end: const Offset(0, 0))
             .animate(
       CurvedAnimation(
-          parent: _animationController,
-          curve: Interval(widget.begin, widget.end, curve: kCurve)),
+        parent: _animationController,
+        curve: Interval(widget.begin, widget.end, curve: kCurve),
+      ),
     );
     super.initState();
   }
@@ -47,11 +53,11 @@ class _FadeFromUpAnimationState extends State<FadeFromUpAnimation>
     return SlideTransition(
       position: _animation,
       child: AnimatedOpacity(
-        child: widget.child,
         opacity: Tween<double>(begin: 0.0, end: 1.0)
             .animate(_animationController)
             .value,
         duration: kDuration,
+        child: widget.child,
       ),
     );
   }
@@ -77,7 +83,9 @@ class _FadeFromDownAnimationState extends State<FadeFromDownAnimation>
         setState(() {});
       })
       ..forward();
-    _animation = Tween<Offset>(begin: Offset(0, -2), end: Offset(0, 0)).animate(
+    _animation =
+        Tween<Offset>(begin: const Offset(0, -2), end: const Offset(0, 0))
+            .animate(
       CurvedAnimation(parent: _animationController, curve: kCurve),
     );
     super.initState();

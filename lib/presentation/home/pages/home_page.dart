@@ -17,7 +17,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -67,9 +67,11 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Colors.white,
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const CreateCoursePage()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const CreateCoursePage(),
+                        ),
+                      );
                     },
                     child: const Icon(Icons.add, color: Colors.black),
                   ),
@@ -86,18 +88,19 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FancyTextReveal(
-                            properties: Properties(
-                                milliseconds: 400,
-                                // horizontalSpacing: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                )),
+                            properties: const Properties(
+                              milliseconds: 400,
+                              // horizontalSpacing: 100,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "My Courses".toUpperCase(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
@@ -108,160 +111,174 @@ class _HomePageState extends State<HomePage> {
                                   height: 2,
                                   width: 25,
                                   color: Colors.white12,
-                                )
+                                ),
                               ],
                             ),
                           ),
                           CustomPopupMenu(
-                              controller: controller,
-                              barrierColor: Colors.black45,
-                              pressType: PressType.singleClick,
-                              menuBuilder: () {
-                                return Container(
-                                  width: 200,
-                                  padding: const EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 35,
-                                        // width: 100,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.black87,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10),
-                                              topRight: Radius.circular(10),
-                                            )),
-                                        child: Text(
-                                          isUserStudent
-                                              ? "Student".toUpperCase()
-                                              : "Teacher".toUpperCase(),
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 2),
+                            controller: controller,
+                            barrierColor: Colors.black45,
+                            pressType: PressType.singleClick,
+                            menuBuilder: () {
+                              return Container(
+                                width: 200,
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 35,
+                                      // width: 100,
+                                      alignment: Alignment.center,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.black87,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10),
                                         ),
                                       ),
-                                      const SizedBox(height: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: Text(
-                                              userEmail,
-                                              style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 12),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 5),
-                                          Container(
-                                            height: 1,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(1),
-                                              color: Colors.black12,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 20),
-                                          TextButton(
-                                            style: ButtonStyle(
-                                              overlayColor:
-                                                  MaterialStateProperty.all(
-                                                Colors.black12,
-                                              ),
-                                            ),
-                                            onPressed: () async {
-                                              await Future.delayed(
-                                                  const Duration(
-                                                      milliseconds: 400));
-                                              AuthBloc.addEventWithoutContext(
-                                                  const AuthEvent.switchRole());
-                                              controller.hideMenu();
-                                              Fluttertoast.showToast(
-                                                msg: !isUserStudent
-                                                    ? "Logged in as Student"
-                                                    : "Logged in as Teacher",
-                                                textColor: Colors.black87,
-                                                backgroundColor: Colors.white,
-                                                toastLength: Toast.LENGTH_LONG,
-                                                fontSize: 12,
-                                              );
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.repeat,
-                                                  color: Colors.black26,
-                                                  size: 14,
-                                                ),
-                                                const SizedBox(width: 10),
-                                                Text(
-                                                  "Switch role",
-                                                  style: TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          TextButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.red.shade300),
-                                              overlayColor:
-                                                  MaterialStateProperty.all(
-                                                Colors.white10,
-                                              ),
-                                            ),
-                                            onPressed: () async {
-                                              await Future.delayed(
-                                                  const Duration(
-                                                      milliseconds: 400));
-                                              controller.hideMenu();
-
-                                              AuthBloc.addEventWithoutContext(
-                                                  const AuthEvent.signOut());
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          LoginPage()));
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.logout_outlined,
-                                                  color: Colors.white,
-                                                  size: 14,
-                                                ),
-                                                const SizedBox(width: 10),
-                                                Text(
-                                                  "Logout",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        isUserStudent
+                                            ? "Student".toUpperCase()
+                                            : "Teacher".toUpperCase(),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          letterSpacing: 2,
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                );
-                              },
-                              child: const UserAvatar())
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            userEmail,
+                                            style: const TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Container(
+                                          height: 1,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(1),
+                                            color: Colors.black12,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            overlayColor:
+                                                MaterialStateProperty.all(
+                                              Colors.black12,
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            await Future.delayed(
+                                              const Duration(
+                                                milliseconds: 400,
+                                              ),
+                                            );
+                                            AuthBloc.addEventWithoutContext(
+                                              const AuthEvent.switchRole(),
+                                            );
+                                            controller.hideMenu();
+                                            Fluttertoast.showToast(
+                                              msg: !isUserStudent
+                                                  ? "Logged in as Student"
+                                                  : "Logged in as Teacher",
+                                              textColor: Colors.black87,
+                                              backgroundColor: Colors.white,
+                                              toastLength: Toast.LENGTH_LONG,
+                                              fontSize: 12,
+                                            );
+                                          },
+                                          child: const Row(
+                                            children: [
+                                              Icon(
+                                                Icons.repeat,
+                                                color: Colors.black26,
+                                                size: 14,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                "Switch role",
+                                                style: TextStyle(
+                                                  color: Colors.black87,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                              Colors.red.shade300,
+                                            ),
+                                            overlayColor:
+                                                MaterialStateProperty.all(
+                                              Colors.white10,
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            await Future.delayed(
+                                              const Duration(
+                                                milliseconds: 400,
+                                              ),
+                                            );
+                                            controller.hideMenu();
+
+                                            AuthBloc.addEventWithoutContext(
+                                              const AuthEvent.signOut(),
+                                            );
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const LoginPage(),
+                                              ),
+                                            );
+                                          },
+                                          child: const Row(
+                                            children: [
+                                              Icon(
+                                                Icons.logout_outlined,
+                                                color: Colors.white,
+                                                size: 14,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                "Logout",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            child: const UserAvatar(),
+                          ),
                         ],
                       ),
                     ),
@@ -270,7 +287,8 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.black,
                         onRefresh: () async {
                           CourseBloc.addEventWithoutContext(
-                              const CourseEvent.getCourses());
+                            const CourseEvent.getCourses(),
+                          );
                           await Future.delayed(const Duration(seconds: 8));
                         },
                         child: ListView.builder(
@@ -282,7 +300,9 @@ class _HomePageState extends State<HomePage> {
                             return Container(
                               height: 150,
                               margin: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
+                                horizontal: 10,
+                                vertical: 5,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white10,
                                 borderRadius: BorderRadius.circular(8),
@@ -290,26 +310,28 @@ class _HomePageState extends State<HomePage> {
                               child: TextButton(
                                 style: ButtonStyle(
                                   overlayColor: MaterialStateProperty.all(
-                                      coverUrls[index % 7]
-                                          .values
-                                          .first
-                                          .withOpacity(0.5)),
+                                    coverUrls[index % 7]
+                                        .values
+                                        .first
+                                        .withOpacity(0.5),
+                                  ),
                                 ),
                                 onPressed: () async {
                                   await Future.delayed(
-                                      const Duration(milliseconds: 250));
+                                    const Duration(milliseconds: 250),
+                                  );
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => CoursePage(
-                                                course: course,
-                                                courseCoverImageUrl:
-                                                    "https://www.gstatic.com/classroom/themes/img_${coverUrls[index % 7].entries.first.key}.jpg",
-                                                primaryColor:
-                                                    coverUrls[index % 7]
-                                                        .values
-                                                        .first,
-                                              )));
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => CoursePage(
+                                        course: course,
+                                        courseCoverImageUrl:
+                                            "https://www.gstatic.com/classroom/themes/img_${coverUrls[index % 7].entries.first.key}.jpg",
+                                        primaryColor:
+                                            coverUrls[index % 7].values.first,
+                                      ),
+                                    ),
+                                  );
                                 },
                                 child: Stack(
                                   fit: StackFit.expand,
@@ -335,7 +357,7 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           Text(
                                             course.name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -344,7 +366,7 @@ class _HomePageState extends State<HomePage> {
                                             course.teachers!.first.profile
                                                     ?.emailAddress ??
                                                 "teacher@gmail.com",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white54,
                                             ),
                                           ),

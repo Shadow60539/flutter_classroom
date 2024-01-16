@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       child: showErrors
           ? isValidUsername
               ? const SizedBox.shrink()
-              : Text(
+              : const Text(
                   "Username is invalid",
                   style: TextStyle(color: Colors.white24),
                 )
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       child: showErrors
           ? isValidPassword
               ? const SizedBox.shrink()
-              : Text(
+              : const Text(
                   "Password must contain minimum 8 characters, at least one letter and one number",
                   style: TextStyle(color: Colors.white24),
                 )
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                     server: (_) =>
                         "Oops! Server down. Please try again after sometime",
                     unexpected: (_) =>
-                        "Oops something went wrong. Please try again after sometime"),
+                        "Oops something went wrong. Please try again after sometime",),
                 textColor: Colors.black87,
                 backgroundColor: Colors.white,
                 toastLength: Toast.LENGTH_LONG,
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               );
             },
             (r) => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (_) => const RoleSelectionPage())),
+                MaterialPageRoute(builder: (_) => const RoleSelectionPage()),),
           ),
         );
         state.signInUsingGoogleOption.fold(
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               );
             },
             (r) => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (_) => const RoleSelectionPage())),
+                MaterialPageRoute(builder: (_) => const RoleSelectionPage()),),
           ),
         );
       },
@@ -143,13 +143,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FancyTextReveal(
+                    const FancyTextReveal(
                       properties: Properties(
                           milliseconds: 400,
                           // horizontalSpacing: 100,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                          )),
+                          ),),
                       child: Text(
                         "Login",
                         style: TextStyle(
@@ -173,8 +173,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       child: TextFormField(
                         controller: userNameController,
                         decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(bottom: 2),
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.only(bottom: 2),
                             child: Icon(
                               Icons.mail_outline_outlined,
                               size: 18,
@@ -188,13 +188,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           filled: true,
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(5)),
+                              borderRadius: BorderRadius.circular(5),),
                         ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     AnimatedSize(
-                      vsync: this,
                       duration: const Duration(milliseconds: 400),
                       child: userNameErrorWidget(),
                     ),
@@ -219,8 +218,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               size: 20,
                             ),
                           ),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(bottom: 3),
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.only(bottom: 3),
                             child: Icon(
                               Icons.vpn_key_outlined,
                               size: 18,
@@ -234,13 +233,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           filled: true,
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(5)),
+                              borderRadius: BorderRadius.circular(5),),
                         ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     AnimatedSize(
-                      vsync: this,
                       duration: const Duration(milliseconds: 400),
                       child: passwordErrorWidget(),
                     ),
@@ -258,18 +256,18 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 AuthEvent.signInUsingUsername(
                               userName: userNameController.text,
                               password: passwordController.text,
-                            ));
+                            ),);
                           }
                           setState(() {});
                         },
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           backgroundColor: isValid
-                              ? MaterialStateProperty.all(Color(0xff0DF5E3))
+                              ? MaterialStateProperty.all(const Color(0xff0DF5E3))
                               : MaterialStateProperty.all(Colors.white10),
                         ),
                         child: isLoading
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 15,
                                 width: 15,
                                 child: CircularProgressIndicator(
@@ -277,7 +275,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                   color: Colors.black,
                                 ),
                               )
-                            : Text(
+                            : const Text(
                                 "LOGIN",
                                 style: TextStyle(
                                   color: Colors.black,
@@ -300,7 +298,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-                        Text(
+                        const Text(
                           "OR",
                           style: TextStyle(color: Colors.white10),
                         ),
@@ -323,7 +321,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       child: TextButton(
                         onPressed: () {
                           AuthBloc.addEventWithoutContext(
-                              const AuthEvent.signInUsingGoogle());
+                              const AuthEvent.signInUsingGoogle(),);
                         },
                         style: ButtonStyle(
                           overlayColor:
@@ -339,7 +337,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               height: 20,
                             ),
                             const SizedBox(width: 10),
-                            Text(
+                            const Text(
                               "Continue with Google",
                               style: TextStyle(color: Colors.white30),
                             ),
@@ -347,11 +345,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => SignUpPage()));
+                            MaterialPageRoute(builder: (_) => const SignUpPage()),);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -364,12 +362,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             ),
                           ),
                           const SizedBox(width: 4),
-                          Text(
+                          const Text(
                             "Sign up",
                             style: TextStyle(
                                 fontSize: 13,
                                 color: Color(0xff0DF5E3),
-                                fontWeight: FontWeight.w600),
+                                fontWeight: FontWeight.w600,),
                           ),
                         ],
                       ),
