@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class InviteStudentPage extends StatefulWidget {
-  const InviteStudentPage({Key? key, required this.courseId}) : super(key: key);
+  const InviteStudentPage({super.key, required this.courseId});
 
   final String courseId;
 
@@ -44,7 +44,7 @@ class _InviteStudentPageState extends State<InviteStudentPage>
       child: showErrors
           ? isValidEmail
               ? const SizedBox.shrink()
-              : Text(
+              : const Text(
                   "Email address is invalid",
                   style: TextStyle(color: Colors.white24),
                 )
@@ -100,17 +100,18 @@ class _InviteStudentPageState extends State<InviteStudentPage>
               elevation: 0,
               backgroundColor: Colors.transparent,
               leading: IconButton(
-                  splashColor: Colors.transparent,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.keyboard_backspace_outlined,
-                      color: Colors.white30,
-                    ),
-                  )),
+                splashColor: Colors.transparent,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Icon(
+                    Icons.keyboard_backspace_outlined,
+                    color: Colors.white30,
+                  ),
+                ),
+              ),
             ),
             backgroundColor: Colors.black,
             body: SingleChildScrollView(
@@ -120,13 +121,14 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FancyTextReveal(
+                    const FancyTextReveal(
                       properties: Properties(
-                          milliseconds: 400,
-                          // horizontalSpacing: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          )),
+                        milliseconds: 400,
+                        // horizontalSpacing: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                      ),
                       child: Text(
                         "Invite Student",
                         style: TextStyle(
@@ -150,8 +152,8 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                       child: TextFormField(
                         controller: emailController,
                         decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(bottom: 3),
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.only(bottom: 3),
                             child: Icon(
                               Icons.title,
                               size: 18,
@@ -164,14 +166,14 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(5)),
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     AnimatedSize(
-                      vsync: this,
                       duration: const Duration(milliseconds: 400),
                       child: emailErrorWidget(),
                     ),
@@ -186,21 +188,23 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                             isLoading = true;
 
                             CourseBloc.addEventWithoutContext(
-                                CourseEvent.addStudentToCourse(
-                              courseId: widget.courseId,
-                              studentEmail: emailController.text,
-                            ));
+                              CourseEvent.addStudentToCourse(
+                                courseId: widget.courseId,
+                                studentEmail: emailController.text,
+                              ),
+                            );
                           }
                           setState(() {});
                         },
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           backgroundColor: isValid
-                              ? MaterialStateProperty.all(Color(0xff0DF5E3))
+                              ? MaterialStateProperty.all(
+                                  const Color(0xff0DF5E3))
                               : MaterialStateProperty.all(Colors.white10),
                         ),
                         child: isLoading
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 15,
                                 width: 15,
                                 child: CircularProgressIndicator(
@@ -208,7 +212,7 @@ class _InviteStudentPageState extends State<InviteStudentPage>
                                   color: Colors.black,
                                 ),
                               )
-                            : Text(
+                            : const Text(
                                 "INVITE",
                                 style: TextStyle(
                                   color: Colors.black,

@@ -6,8 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CreateCoursePage extends StatefulWidget {
-  const CreateCoursePage({Key? key, this.name, this.courseId})
-      : super(key: key);
+  const CreateCoursePage({super.key, this.name, this.courseId});
 
   final String? name;
   final String? courseId;
@@ -46,7 +45,7 @@ class _CreateCoursePageState extends State<CreateCoursePage>
       child: showErrors
           ? isValidName
               ? const SizedBox.shrink()
-              : Text(
+              : const Text(
                   "Class name should have atleast one character",
                   style: TextStyle(color: Colors.white24),
                 )
@@ -110,17 +109,18 @@ class _CreateCoursePageState extends State<CreateCoursePage>
               elevation: 0,
               backgroundColor: Colors.transparent,
               leading: IconButton(
-                  splashColor: Colors.transparent,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.keyboard_backspace_outlined,
-                      color: Colors.white30,
-                    ),
-                  )),
+                splashColor: Colors.transparent,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Icon(
+                    Icons.keyboard_backspace_outlined,
+                    color: Colors.white30,
+                  ),
+                ),
+              ),
             ),
             backgroundColor: Colors.black,
             body: SingleChildScrollView(
@@ -131,15 +131,16 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FancyTextReveal(
-                      properties: Properties(
-                          milliseconds: 400,
-                          // horizontalSpacing: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          )),
+                      properties: const Properties(
+                        milliseconds: 400,
+                        // horizontalSpacing: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                      ),
                       child: Text(
                         widget.name == null ? "Create Course" : "Update Course",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 26,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
@@ -160,8 +161,8 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                       child: TextFormField(
                         controller: classNameController,
                         decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.only(bottom: 3),
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.only(bottom: 3),
                             child: Icon(
                               Icons.title,
                               size: 18,
@@ -174,14 +175,14 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(5)),
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 5),
                     AnimatedSize(
-                      vsync: this,
                       duration: const Duration(milliseconds: 400),
                       child: nameErrorWidget(),
                     ),
@@ -196,14 +197,17 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                             isLoading = true;
                             if (widget.name == null) {
                               CourseBloc.addEventWithoutContext(
-                                  CourseEvent.createCourse(
-                                      classNameController.text));
+                                CourseEvent.createCourse(
+                                  classNameController.text,
+                                ),
+                              );
                             } else {
                               CourseBloc.addEventWithoutContext(
-                                  CourseEvent.updateCourse(
-                                courseId: widget.courseId!,
-                                name: classNameController.text,
-                              ));
+                                CourseEvent.updateCourse(
+                                  courseId: widget.courseId!,
+                                  name: classNameController.text,
+                                ),
+                              );
                             }
                           }
                           setState(() {});
@@ -211,11 +215,12 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           backgroundColor: isValid
-                              ? MaterialStateProperty.all(Color(0xff0DF5E3))
+                              ? MaterialStateProperty.all(
+                                  const Color(0xff0DF5E3))
                               : MaterialStateProperty.all(Colors.white10),
                         ),
                         child: isLoading
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 15,
                                 width: 15,
                                 child: CircularProgressIndicator(
@@ -225,7 +230,7 @@ class _CreateCoursePageState extends State<CreateCoursePage>
                               )
                             : Text(
                                 widget.name == null ? "CREATE" : "UPDATE",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                 ),

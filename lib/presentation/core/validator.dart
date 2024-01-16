@@ -1,4 +1,4 @@
-import 'clean_string.dart';
+import 'package:classroom/presentation/core/clean_string.dart';
 
 extension EmailValidator on String {
   bool isValidEmail() {

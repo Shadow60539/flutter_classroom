@@ -10,7 +10,7 @@ part of 'course_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',);
 
 /// @nodoc
 class _$CourseEventTearOff {
@@ -40,7 +40,7 @@ class _$CourseEventTearOff {
   }
 
   _AddStudentToCourse addStudentToCourse(
-      {required String courseId, required String studentEmail}) {
+      {required String courseId, required String studentEmail,}) {
     return _AddStudentToCourse(
       courseId: courseId,
       studentEmail: studentEmail,
@@ -48,7 +48,7 @@ class _$CourseEventTearOff {
   }
 
   _RemoveStudentFromCourse removeStudentFromCourse(
-      {required String courseId, required String studentEmail}) {
+      {required String courseId, required String studentEmail,}) {
     return _RemoveStudentFromCourse(
       courseId: courseId,
       studentEmail: studentEmail,
@@ -129,7 +129,7 @@ mixin _$CourseEvent {
 /// @nodoc
 abstract class $CourseEventCopyWith<$Res> {
   factory $CourseEventCopyWith(
-          CourseEvent value, $Res Function(CourseEvent) then) =
+          CourseEvent value, $Res Function(CourseEvent) then,) =
       _$CourseEventCopyWithImpl<$Res>;
 }
 
@@ -145,7 +145,7 @@ class _$CourseEventCopyWithImpl<$Res> implements $CourseEventCopyWith<$Res> {
 /// @nodoc
 abstract class _$GetCoursesCopyWith<$Res> {
   factory _$GetCoursesCopyWith(
-          _GetCourses value, $Res Function(_GetCourses) then) =
+          _GetCourses value, $Res Function(_GetCourses) then,) =
       __$GetCoursesCopyWithImpl<$Res>;
 }
 
@@ -153,8 +153,8 @@ abstract class _$GetCoursesCopyWith<$Res> {
 class __$GetCoursesCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
     implements _$GetCoursesCopyWith<$Res> {
   __$GetCoursesCopyWithImpl(
-      _GetCourses _value, $Res Function(_GetCourses) _then)
-      : super(_value, (v) => _then(v as _GetCourses));
+      _GetCourses value, $Res Function(_GetCourses) then,)
+      : super(value, (v) => then(v as _GetCourses));
 
   @override
   _GetCourses get _value => super._value as _GetCourses;
@@ -259,7 +259,7 @@ abstract class _GetCourses implements CourseEvent {
 /// @nodoc
 abstract class _$CreateCourseCopyWith<$Res> {
   factory _$CreateCourseCopyWith(
-          _CreateCourse value, $Res Function(_CreateCourse) then) =
+          _CreateCourse value, $Res Function(_CreateCourse) then,) =
       __$CreateCourseCopyWithImpl<$Res>;
   $Res call({String name});
 }
@@ -268,8 +268,8 @@ abstract class _$CreateCourseCopyWith<$Res> {
 class __$CreateCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
     implements _$CreateCourseCopyWith<$Res> {
   __$CreateCourseCopyWithImpl(
-      _CreateCourse _value, $Res Function(_CreateCourse) _then)
-      : super(_value, (v) => _then(v as _CreateCourse));
+      _CreateCourse value, $Res Function(_CreateCourse) then,)
+      : super(value, (v) => then(v as _CreateCourse));
 
   @override
   _CreateCourse get _value => super._value as _CreateCourse;
@@ -283,7 +283,7 @@ class __$CreateCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -403,7 +403,7 @@ abstract class _CreateCourse implements CourseEvent {
 /// @nodoc
 abstract class _$DeleteCourseCopyWith<$Res> {
   factory _$DeleteCourseCopyWith(
-          _DeleteCourse value, $Res Function(_DeleteCourse) then) =
+          _DeleteCourse value, $Res Function(_DeleteCourse) then,) =
       __$DeleteCourseCopyWithImpl<$Res>;
   $Res call({String courseId});
 }
@@ -412,8 +412,8 @@ abstract class _$DeleteCourseCopyWith<$Res> {
 class __$DeleteCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
     implements _$DeleteCourseCopyWith<$Res> {
   __$DeleteCourseCopyWithImpl(
-      _DeleteCourse _value, $Res Function(_DeleteCourse) _then)
-      : super(_value, (v) => _then(v as _DeleteCourse));
+      _DeleteCourse value, $Res Function(_DeleteCourse) then,)
+      : super(value, (v) => then(v as _DeleteCourse));
 
   @override
   _DeleteCourse get _value => super._value as _DeleteCourse;
@@ -427,7 +427,7 @@ class __$DeleteCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
           ? _value.courseId
           : courseId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -548,7 +548,7 @@ abstract class _DeleteCourse implements CourseEvent {
 /// @nodoc
 abstract class _$UpdateCourseCopyWith<$Res> {
   factory _$UpdateCourseCopyWith(
-          _UpdateCourse value, $Res Function(_UpdateCourse) then) =
+          _UpdateCourse value, $Res Function(_UpdateCourse) then,) =
       __$UpdateCourseCopyWithImpl<$Res>;
   $Res call({String courseId, String name});
 }
@@ -557,8 +557,8 @@ abstract class _$UpdateCourseCopyWith<$Res> {
 class __$UpdateCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
     implements _$UpdateCourseCopyWith<$Res> {
   __$UpdateCourseCopyWithImpl(
-      _UpdateCourse _value, $Res Function(_UpdateCourse) _then)
-      : super(_value, (v) => _then(v as _UpdateCourse));
+      _UpdateCourse value, $Res Function(_UpdateCourse) then,)
+      : super(value, (v) => then(v as _UpdateCourse));
 
   @override
   _UpdateCourse get _value => super._value as _UpdateCourse;
@@ -577,7 +577,7 @@ class __$UpdateCourseCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -694,7 +694,7 @@ class _$_UpdateCourse implements _UpdateCourse {
 
 abstract class _UpdateCourse implements CourseEvent {
   const factory _UpdateCourse(
-      {required String courseId, required String name}) = _$_UpdateCourse;
+      {required String courseId, required String name,}) = _$_UpdateCourse;
 
   String get courseId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -706,7 +706,7 @@ abstract class _UpdateCourse implements CourseEvent {
 /// @nodoc
 abstract class _$AddStudentToCourseCopyWith<$Res> {
   factory _$AddStudentToCourseCopyWith(
-          _AddStudentToCourse value, $Res Function(_AddStudentToCourse) then) =
+          _AddStudentToCourse value, $Res Function(_AddStudentToCourse) then,) =
       __$AddStudentToCourseCopyWithImpl<$Res>;
   $Res call({String courseId, String studentEmail});
 }
@@ -716,8 +716,8 @@ class __$AddStudentToCourseCopyWithImpl<$Res>
     extends _$CourseEventCopyWithImpl<$Res>
     implements _$AddStudentToCourseCopyWith<$Res> {
   __$AddStudentToCourseCopyWithImpl(
-      _AddStudentToCourse _value, $Res Function(_AddStudentToCourse) _then)
-      : super(_value, (v) => _then(v as _AddStudentToCourse));
+      _AddStudentToCourse value, $Res Function(_AddStudentToCourse) then,)
+      : super(value, (v) => then(v as _AddStudentToCourse));
 
   @override
   _AddStudentToCourse get _value => super._value as _AddStudentToCourse;
@@ -736,7 +736,7 @@ class __$AddStudentToCourseCopyWithImpl<$Res>
           ? _value.studentEmail
           : studentEmail // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -744,7 +744,7 @@ class __$AddStudentToCourseCopyWithImpl<$Res>
 
 class _$_AddStudentToCourse implements _AddStudentToCourse {
   const _$_AddStudentToCourse(
-      {required this.courseId, required this.studentEmail});
+      {required this.courseId, required this.studentEmail,});
 
   @override
   final String courseId;
@@ -856,7 +856,7 @@ class _$_AddStudentToCourse implements _AddStudentToCourse {
 abstract class _AddStudentToCourse implements CourseEvent {
   const factory _AddStudentToCourse(
       {required String courseId,
-      required String studentEmail}) = _$_AddStudentToCourse;
+      required String studentEmail,}) = _$_AddStudentToCourse;
 
   String get courseId => throw _privateConstructorUsedError;
   String get studentEmail => throw _privateConstructorUsedError;
@@ -868,7 +868,7 @@ abstract class _AddStudentToCourse implements CourseEvent {
 /// @nodoc
 abstract class _$RemoveStudentFromCourseCopyWith<$Res> {
   factory _$RemoveStudentFromCourseCopyWith(_RemoveStudentFromCourse value,
-          $Res Function(_RemoveStudentFromCourse) then) =
+          $Res Function(_RemoveStudentFromCourse) then,) =
       __$RemoveStudentFromCourseCopyWithImpl<$Res>;
   $Res call({String courseId, String studentEmail});
 }
@@ -877,9 +877,9 @@ abstract class _$RemoveStudentFromCourseCopyWith<$Res> {
 class __$RemoveStudentFromCourseCopyWithImpl<$Res>
     extends _$CourseEventCopyWithImpl<$Res>
     implements _$RemoveStudentFromCourseCopyWith<$Res> {
-  __$RemoveStudentFromCourseCopyWithImpl(_RemoveStudentFromCourse _value,
-      $Res Function(_RemoveStudentFromCourse) _then)
-      : super(_value, (v) => _then(v as _RemoveStudentFromCourse));
+  __$RemoveStudentFromCourseCopyWithImpl(_RemoveStudentFromCourse value,
+      $Res Function(_RemoveStudentFromCourse) then,)
+      : super(value, (v) => then(v as _RemoveStudentFromCourse));
 
   @override
   _RemoveStudentFromCourse get _value =>
@@ -899,7 +899,7 @@ class __$RemoveStudentFromCourseCopyWithImpl<$Res>
           ? _value.studentEmail
           : studentEmail // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ),);
   }
 }
 
@@ -907,7 +907,7 @@ class __$RemoveStudentFromCourseCopyWithImpl<$Res>
 
 class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
   const _$_RemoveStudentFromCourse(
-      {required this.courseId, required this.studentEmail});
+      {required this.courseId, required this.studentEmail,});
 
   @override
   final String courseId;
@@ -941,7 +941,7 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
   @override
   _$RemoveStudentFromCourseCopyWith<_RemoveStudentFromCourse> get copyWith =>
       __$RemoveStudentFromCourseCopyWithImpl<_RemoveStudentFromCourse>(
-          this, _$identity);
+          this, _$identity,);
 
   @override
   @optionalTypeArgs
@@ -1020,7 +1020,7 @@ class _$_RemoveStudentFromCourse implements _RemoveStudentFromCourse {
 abstract class _RemoveStudentFromCourse implements CourseEvent {
   const factory _RemoveStudentFromCourse(
       {required String courseId,
-      required String studentEmail}) = _$_RemoveStudentFromCourse;
+      required String studentEmail,}) = _$_RemoveStudentFromCourse;
 
   String get courseId => throw _privateConstructorUsedError;
   String get studentEmail => throw _privateConstructorUsedError;
@@ -1032,7 +1032,7 @@ abstract class _RemoveStudentFromCourse implements CourseEvent {
 /// @nodoc
 abstract class _$RemoveUpdatedCourseNameCopyWith<$Res> {
   factory _$RemoveUpdatedCourseNameCopyWith(_RemoveUpdatedCourseName value,
-          $Res Function(_RemoveUpdatedCourseName) then) =
+          $Res Function(_RemoveUpdatedCourseName) then,) =
       __$RemoveUpdatedCourseNameCopyWithImpl<$Res>;
 }
 
@@ -1040,9 +1040,9 @@ abstract class _$RemoveUpdatedCourseNameCopyWith<$Res> {
 class __$RemoveUpdatedCourseNameCopyWithImpl<$Res>
     extends _$CourseEventCopyWithImpl<$Res>
     implements _$RemoveUpdatedCourseNameCopyWith<$Res> {
-  __$RemoveUpdatedCourseNameCopyWithImpl(_RemoveUpdatedCourseName _value,
-      $Res Function(_RemoveUpdatedCourseName) _then)
-      : super(_value, (v) => _then(v as _RemoveUpdatedCourseName));
+  __$RemoveUpdatedCourseNameCopyWithImpl(_RemoveUpdatedCourseName value,
+      $Res Function(_RemoveUpdatedCourseName) then,)
+      : super(value, (v) => then(v as _RemoveUpdatedCourseName));
 
   @override
   _RemoveUpdatedCourseName get _value =>
@@ -1154,8 +1154,8 @@ abstract class _$ResetCopyWith<$Res> {
 /// @nodoc
 class __$ResetCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
     implements _$ResetCopyWith<$Res> {
-  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
-      : super(_value, (v) => _then(v as _Reset));
+  __$ResetCopyWithImpl(_Reset value, $Res Function(_Reset) then)
+      : super(value, (v) => then(v as _Reset));
 
   @override
   _Reset get _value => super._value as _Reset;
@@ -1270,7 +1270,7 @@ class _$CourseStateTearOff {
       required Option<Either<CourseFailure, Unit>> deleteCourseOption,
       required Option<Either<CourseFailure, Unit>> updateCourseOption,
       required Option<Either<CourseFailure, Unit>> sendInvitationOption,
-      required Option<Either<CourseFailure, Unit>> removeStudentOption}) {
+      required Option<Either<CourseFailure, Unit>> removeStudentOption,}) {
     return _CourseState(
       courses: courses,
       updatedCourseName: updatedCourseName,
@@ -1312,7 +1312,7 @@ mixin _$CourseState {
 /// @nodoc
 abstract class $CourseStateCopyWith<$Res> {
   factory $CourseStateCopyWith(
-          CourseState value, $Res Function(CourseState) then) =
+          CourseState value, $Res Function(CourseState) then,) =
       _$CourseStateCopyWithImpl<$Res>;
   $Res call(
       {List<CourseModel> courses,
@@ -1322,7 +1322,7 @@ abstract class $CourseStateCopyWith<$Res> {
       Option<Either<CourseFailure, Unit>> deleteCourseOption,
       Option<Either<CourseFailure, Unit>> updateCourseOption,
       Option<Either<CourseFailure, Unit>> sendInvitationOption,
-      Option<Either<CourseFailure, Unit>> removeStudentOption});
+      Option<Either<CourseFailure, Unit>> removeStudentOption,});
 }
 
 /// @nodoc
@@ -1377,7 +1377,7 @@ class _$CourseStateCopyWithImpl<$Res> implements $CourseStateCopyWith<$Res> {
           ? _value.removeStudentOption
           : removeStudentOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<CourseFailure, Unit>>,
-    ));
+    ),);
   }
 }
 
@@ -1385,7 +1385,7 @@ class _$CourseStateCopyWithImpl<$Res> implements $CourseStateCopyWith<$Res> {
 abstract class _$CourseStateCopyWith<$Res>
     implements $CourseStateCopyWith<$Res> {
   factory _$CourseStateCopyWith(
-          _CourseState value, $Res Function(_CourseState) then) =
+          _CourseState value, $Res Function(_CourseState) then,) =
       __$CourseStateCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -1396,15 +1396,15 @@ abstract class _$CourseStateCopyWith<$Res>
       Option<Either<CourseFailure, Unit>> deleteCourseOption,
       Option<Either<CourseFailure, Unit>> updateCourseOption,
       Option<Either<CourseFailure, Unit>> sendInvitationOption,
-      Option<Either<CourseFailure, Unit>> removeStudentOption});
+      Option<Either<CourseFailure, Unit>> removeStudentOption,});
 }
 
 /// @nodoc
 class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
     implements _$CourseStateCopyWith<$Res> {
   __$CourseStateCopyWithImpl(
-      _CourseState _value, $Res Function(_CourseState) _then)
-      : super(_value, (v) => _then(v as _CourseState));
+      _CourseState value, $Res Function(_CourseState) then,)
+      : super(value, (v) => then(v as _CourseState));
 
   @override
   _CourseState get _value => super._value as _CourseState;
@@ -1453,7 +1453,7 @@ class __$CourseStateCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
           ? _value.removeStudentOption
           : removeStudentOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<CourseFailure, Unit>>,
-    ));
+    ),);
   }
 }
 
@@ -1468,7 +1468,7 @@ class _$_CourseState implements _CourseState {
       required this.deleteCourseOption,
       required this.updateCourseOption,
       required this.sendInvitationOption,
-      required this.removeStudentOption});
+      required this.removeStudentOption,});
 
   @override
   final List<CourseModel> courses;
@@ -1516,7 +1516,7 @@ class _$_CourseState implements _CourseState {
                     .equals(other.updateCourseOption, updateCourseOption)) &&
             (identical(other.sendInvitationOption, sendInvitationOption) ||
                 const DeepCollectionEquality().equals(
-                    other.sendInvitationOption, sendInvitationOption)) &&
+                    other.sendInvitationOption, sendInvitationOption,)) &&
             (identical(other.removeStudentOption, removeStudentOption) ||
                 const DeepCollectionEquality()
                     .equals(other.removeStudentOption, removeStudentOption)));
@@ -1550,7 +1550,7 @@ abstract class _CourseState implements CourseState {
           required Option<Either<CourseFailure, Unit>> deleteCourseOption,
           required Option<Either<CourseFailure, Unit>> updateCourseOption,
           required Option<Either<CourseFailure, Unit>> sendInvitationOption,
-          required Option<Either<CourseFailure, Unit>> removeStudentOption}) =
+          required Option<Either<CourseFailure, Unit>> removeStudentOption,}) =
       _$_CourseState;
 
   @override

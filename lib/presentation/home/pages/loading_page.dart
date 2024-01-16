@@ -1,14 +1,13 @@
 import 'package:classroom/application/course/course_bloc.dart';
 import 'package:classroom/presentation/core/fade_animations.dart';
+import 'package:classroom/presentation/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 
-import 'home_page.dart';
-
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({Key? key}) : super(key: key);
+  const LoadingPage({super.key});
 
   @override
   _LoadingPageState createState() => _LoadingPageState();
@@ -43,8 +42,8 @@ class _LoadingPageState extends State<LoadingPage>
             (some) => some.fold(
                   (l) => null,
                   (r) => Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => const HomePage())),
-                ));
+                      MaterialPageRoute(builder: (_) => const HomePage()),),
+                ),);
       },
       builder: (context, state) {
         return SafeArea(
@@ -57,10 +56,9 @@ class _LoadingPageState extends State<LoadingPage>
                 Transform.scale(
                   scale: 0.75,
                   child: Lottie.asset('assets/core/loading.json',
-                      frameRate: FrameRate.max),
+                      frameRate: FrameRate.max,),
                 ),
                 AnimatedSize(
-                  vsync: this,
                   duration: const Duration(milliseconds: 600),
                   child: Visibility(
                     visible: !isVisible,
@@ -75,7 +73,6 @@ class _LoadingPageState extends State<LoadingPage>
                   ),
                 ),
                 AnimatedSize(
-                  vsync: this,
                   duration: const Duration(milliseconds: 600),
                   child: Visibility(
                     visible: isVisible,
@@ -88,11 +85,11 @@ class _LoadingPageState extends State<LoadingPage>
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
-        ));
+        ),);
       },
     );
   }

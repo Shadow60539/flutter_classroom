@@ -38,7 +38,9 @@ class CourseRepo extends ICoursesRepo {
     final UserModel cacheUser = await box.get(HiveBoxNames.user) as UserModel;
 
     await box.put(
-        HiveBoxNames.user, cacheUser.copyWith(gmail: googleUser.email));
+      HiveBoxNames.user,
+      cacheUser.copyWith(gmail: googleUser.email),
+    );
 
     final response = await api.courses.list();
 
@@ -184,8 +186,10 @@ class CourseRepo extends ICoursesRepo {
   }
 
   @override
-  Future<Either<CourseFailure, Unit>> removeStudentFromCourse(
-      {required String courseId, required String studentEmail}) async {
+  Future<Either<CourseFailure, Unit>> removeStudentFromCourse({
+    required String courseId,
+    required String studentEmail,
+  }) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn(
         scopes: [

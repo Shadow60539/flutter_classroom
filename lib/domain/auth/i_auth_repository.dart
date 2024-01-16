@@ -1,7 +1,6 @@
+import 'package:classroom/domain/auth/auth_failures.dart';
 import 'package:classroom/domain/auth/user_model.dart';
 import 'package:dartz/dartz.dart';
-
-import 'auth_failures.dart';
 
 abstract class IAuthRepo {
   /// Sign up using username and password

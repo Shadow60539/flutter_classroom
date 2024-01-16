@@ -51,12 +51,13 @@ class AuthRepo extends IAuthRepo {
           final UserCredential userCredential = await firebaseAuth
               .createUserWithEmailAndPassword(email: email, password: password);
           await box.put(
-              HiveBoxNames.user,
-              UserModel(
-                email: email,
-                id: userCredential.user!.uid,
-                userName: userName,
-              ));
+            HiveBoxNames.user,
+            UserModel(
+              email: email,
+              id: userCredential.user!.uid,
+              userName: userName,
+            ),
+          );
 
           final UserModel userModel = UserModel.fromCredential(userCredential);
 
@@ -68,9 +69,9 @@ class AuthRepo extends IAuthRepo {
         return const Left(AuthFailure.usernameAlreadyTaken());
       }
     } catch (e) {
-      final FirebaseAuthException _exception = e as FirebaseAuthException;
+      final FirebaseAuthException exception = e as FirebaseAuthException;
 
-      switch (_exception.code) {
+      switch (exception.code) {
         case ERROR_INVALID_EMAIL:
           return const Left(AuthFailure.invalidEmail());
         case ERROR_WRONG_PASSWORD:
@@ -89,8 +90,10 @@ class AuthRepo extends IAuthRepo {
   }
 
   @override
-  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword(
-      {required String userName, required String password}) async {
+  Future<Either<AuthFailure, UserModel>> signInUsingUsernameAndPassword({
+    required String userName,
+    required String password,
+  }) async {
     try {
       final userCollection = firebaseFirestore.collection(USER_COLLECTION);
       final snapshot = await userCollection.doc(userName).get();
@@ -105,12 +108,13 @@ class AuthRepo extends IAuthRepo {
             .signInWithEmailAndPassword(email: email, password: password);
 
         await box.put(
-            HiveBoxNames.user,
-            UserModel(
-              email: email,
-              id: userCredential.user!.uid,
-              userName: userName,
-            ));
+          HiveBoxNames.user,
+          UserModel(
+            email: email,
+            id: userCredential.user!.uid,
+            userName: userName,
+          ),
+        );
 
         final UserModel userModel = UserModel.fromCredential(userCredential);
 
@@ -119,9 +123,9 @@ class AuthRepo extends IAuthRepo {
         return const Left(AuthFailure.noUserFound());
       }
     } on Exception catch (e) {
-      final FirebaseAuthException _exception = e as FirebaseAuthException;
+      final FirebaseAuthException exception = e as FirebaseAuthException;
 
-      switch (_exception.code) {
+      switch (exception.code) {
         case ERROR_INVALID_EMAIL:
           return const Left(AuthFailure.invalidEmail());
         case ERROR_WRONG_PASSWORD:
@@ -169,12 +173,13 @@ class AuthRepo extends IAuthRepo {
         }
 
         await box.put(
-            HiveBoxNames.user,
-            UserModel(
-              email: credential.user!.email!,
-              id: credential.user!.uid,
-              userName: userName,
-            ));
+          HiveBoxNames.user,
+          UserModel(
+            email: credential.user!.email!,
+            id: credential.user!.uid,
+            userName: userName,
+          ),
+        );
 
         final UserModel userModel = UserModel.fromCredential(credential);
 
